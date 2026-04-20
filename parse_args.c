@@ -6,11 +6,11 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/20 18:53:38 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/20 19:55:55 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ft_is_int(char *str)
 {
@@ -25,29 +25,43 @@ int	ft_is_int(char *str)
 	return (1);
 }
 
-int	**ft_parse(char **str_array)
+t_stack	**ft_init(char **str_array)
 {
-	unsigned int	i;
-	int			*stack_a;
-	int			*stack_a;
-	int			**stacks_ab;
+	int	i;
+	t_stack	*a;
+	t_stack	*b;
+	t_stack	**stacks_ab;
 
 	i = 0;
 	while (str_array[i])
 		if (!ft_is_int(str_array[i++]))
-			return (NULL);
-	stack_a = (int *)malloc((i + 1) * sizeof(int));
-	stack_b = (int *)ft_calloc(i + 1, sizeof(int));
-	if (stack_a == NULL)
+		{
+			a.nbrs = NULL;
+			stacks_ab[0] = a;
+			return (stacks_ab);
+		}
+	a = (t_stack)malloc(i * sizeof(t_stack));
+	b = (t_stack)ft_calloc(i, sizeof(t_stack));
+	if (a == NULL)
 		return (NULL);
+	a.current_len = i - 1;
+	b.current_len = 0;
+	stacks_ab[0] = a;
+	stacks_ab[1] = b;
+	return (stacks_ab);
+}
+
+void	ft_parse(char **argv)
+{
+	int	i;
+	t_stack	**stacks_ab;
+
 	i = 0;
-	while (str_array[i])
+	argv++;
+	stacks_ab = ft_init(argv);
+	while (argv[i])
 	{
-		stack_a[i] = ft_atoi(str_array[i]);
+		stacks_ab[0].nbrs[i] = ft_atoi(argv[i]);
 		i++;
 	}
-	stack_a[i] = '\0';
-	stacks_ab[0] = stack_a;
-	stacks_ab[1] = stack_b;
-	return (stacks_ab);
 }
