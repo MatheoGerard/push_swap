@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/21 17:11:04 by nlovius          ###   ########.fr       */
+/*   Created: 2026/04/16 14:00:36 by nlovius           #+#    #+#             */
+/*   Updated: 2026/04/17 17:41:58 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "libft/libft.h"
-
-typedef struct s_stack
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	current_len;
-	int	*nbrs;
-}			t_stack;
-#endif
+	unsigned int	nb;
+
+	if (n < 0)
+	{
+		nb = (unsigned int)(-n);
+		ft_putchar_fd('-', fd);
+	}
+	else
+		nb = (unsigned int)n;
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((nb % 10) + '0', fd);
+}

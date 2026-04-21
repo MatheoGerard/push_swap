@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/20 19:55:55 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/21 17:16:40 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ t_stack	**ft_init(char **str_array)
 	while (str_array[i])
 		if (!ft_is_int(str_array[i++]))
 		{
-			a.nbrs = NULL;
+			a->nbrs = NULL;
 			stacks_ab[0] = a;
 			return (stacks_ab);
 		}
-	a = (t_stack)malloc(i * sizeof(t_stack));
-	b = (t_stack)ft_calloc(i, sizeof(t_stack));
+	a->nbrs = (int *)malloc(i * sizeof(int));
+	b->nbrs = (int *)ft_calloc(i, sizeof(int));
 	if (a == NULL)
 		return (NULL);
-	a.current_len = i - 1;
-	b.current_len = 0;
+	a->current_len = i - 1;
+	b->current_len = 0;
 	stacks_ab[0] = a;
 	stacks_ab[1] = b;
 	return (stacks_ab);
@@ -61,7 +61,7 @@ void	ft_parse(char **argv)
 	stacks_ab = ft_init(argv);
 	while (argv[i])
 	{
-		stacks_ab[0].nbrs[i] = ft_atoi(argv[i]);
+		stacks_ab[0]->nbrs[i] = ft_atoi(argv[i]);
 		i++;
 	}
 }

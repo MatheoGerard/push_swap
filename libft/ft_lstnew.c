@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/21 17:11:04 by nlovius          ###   ########.fr       */
+/*   Created: 2026/04/16 16:16:04 by nlovius           #+#    #+#             */
+/*   Updated: 2026/04/17 15:55:03 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include "libft/libft.h"
-
-typedef struct s_stack
+t_list	*ft_lstnew(void *content)
 {
-	int	current_len;
-	int	*nbrs;
-}			t_stack;
-#endif
+	t_list	*newlist;
+
+	newlist = (t_list *)malloc(sizeof(t_list));
+	if (newlist == NULL)
+		return (newlist);
+	newlist->content = content;
+	newlist->next = NULL;
+	return (newlist);
+}
