@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/21 17:16:40 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/21 17:30:53 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ t_stack	**ft_init(char **str_array)
 	return (stacks_ab);
 }
 
-void	ft_parse(char **argv)
+void	ft_parse(char **argv, t_stack **stacks_ab)
 {
 	int	i;
-	t_stack	**stacks_ab;
 
 	i = 0;
 	argv++;
