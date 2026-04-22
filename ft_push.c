@@ -6,27 +6,34 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/21 17:32:05 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/22 15:37:02 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_push_b(t_stack a, t_stack b)
+#include "push_swap.h"
+
+void	push(t_stack src, t_stack dest)
 {
-	int	i;
+	int	len_minus1;
 
-	if (b.current_len == 0)
-	{
-		b.current_len += 1;
-		a.current_len -= 1;
-
-		b.nbrs[0] = a.nbrs[0];
-		while ()
-		{
-
-		}
-	}
-	while ()
-	{
-
-	}
+	len_minus1 = dest -> current_len - 1;
+	pushup_tmp(src);
+	pushdown_tmp(dest);
+	dest.nbrs[0] = src->tmp;
+	dest.nbrs[len_minus1] = dest->tmp;
+	src -> current_len -= 1;
+	dest -> current_len += 1;
 }
+
+void	push_a(t_stack a, t_stack b)
+{
+	push(b, a);
+}
+
+
+void	push_b(t_stack a, t_stack b)
+{
+	push(a, b);
+}
+
+
