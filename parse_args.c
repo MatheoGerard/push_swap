@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/21 17:30:53 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/22 17:25:35 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,42 +25,42 @@ int	ft_is_int(char *str)
 	return (1);
 }
 
-t_stack	**ft_init(char **str_array)
+t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 {
 	int	i;
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	**stacks_ab;
 
 	i = 0;
 	while (str_array[i])
 		if (!ft_is_int(str_array[i++]))
 		{
-			a->nbrs = NULL;
-			stacks_ab[0] = a;
+			stacks_ab[0] = *a;
 			return (stacks_ab);
 		}
+	a = (t_stack *)malloc(sizeof(t_stack));
+	b = (t_stack *)malloc(sizeof(t_stack));
 	a->nbrs = (int *)malloc(i * sizeof(int));
 	b->nbrs = (int *)ft_calloc(i, sizeof(int));
-	if (a == NULL)
+	if (a->nbrs == NULL || b->nbrs == NULL)
 		return (NULL);
-	a->current_len = i - 1;
+	a->current_len = i;
 	b->current_len = 0;
-	stacks_ab[0] = a;
-	stacks_ab[1] = b;
+	stacks_ab[0] = *a;
+	stacks_ab[1] = *b;
 	return (stacks_ab);
 }
 
-void	ft_parse(char **argv, t_stack **stacks_ab)
+void	ft_parse(char **argv, t_stack *stacks_ab)
 {
 	int	i;
 
 	i = 0;
 	argv++;
-	stacks_ab = ft_init(argv);
+	stacks_ab = ft_init(argv, stacks_ab);
 	while (argv[i])
 	{
-		stacks_ab[0]->nbrs[i] = ft_atoi(argv[i]);
+		stacks_ab[0].nbrs[i] = ft_atoi(argv[i]);
 		i++;
 	}
 }

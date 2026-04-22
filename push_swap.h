@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/21 17:42:46 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/22 17:42:37 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,17 @@
 
 typedef struct s_stack
 {
-	int	*current_len;
+	int	current_len;
 	int	*nbrs;
-	int	*tmp;
+	int	tmp;
 }			t_stack;
+
+void	ft_parse(char **argv, t_stack *stacks_ab);
+void	ft_swap(t_stack *stack);
+void	rotate(t_stack *stack);
+void	rrotate(t_stack *stack);
+void	pushup_tmp(t_stack *stack);
+void	pushdown_tmp(t_stack *stack);
+void	push_a(t_stack *a, t_stack *b);
+void	push_b(t_stack *a, t_stack *b);
 #endif
