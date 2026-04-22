@@ -6,16 +6,21 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 15:37:02 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/22 15:42:37 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 void	push(t_stack src, t_stack dest)
 {
 	int	len_minus1;
 
+	if (src->current_len == 0)
+	{
+		printf("%s\n", "no element in src stack!!!");
+		return ;
+	}
 	len_minus1 = dest -> current_len - 1;
 	pushup_tmp(src);
 	pushdown_tmp(dest);
