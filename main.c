@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/22 17:53:11 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/22 20:39:23 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	main(int ac, char **av)
 	}
 	printf("|||||||BECOMES||||||\n");
 	//ft_swap(a);
-	push_b(a, b);
+	//bubble_sort(a);
+	selection_sort(a, b);
 	i = 0;
 	printf("|||||||STACK_A||||||\n");
 	while (i < a->current_len)
@@ -40,6 +41,7 @@ int	main(int ac, char **av)
 		printf("%d\n", a->nbrs[i]);
 		i++;
 	}
+	/*
 	i = 0;
 	printf("|||||||STACK_B||||||\n");
 	while (i < b->current_len)
@@ -56,7 +58,7 @@ int	main(int ac, char **av)
 	}
 	printf("|||||||BECOMES||||||\n");
 	//ft_swap(a);
-	push_a(a, b);
+	pus(a, b);
 	i = 0;
 	printf("|||||||STACK_A||||||\n");
 	while (i < a->current_len)
@@ -71,5 +73,7 @@ int	main(int ac, char **av)
 		printf("%d\n", b->nbrs[i]);
 		i++;
 	}
+
+*/
 
 }

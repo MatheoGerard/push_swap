@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 18:13:05 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/22 20:40:52 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void	push(t_stack *src, t_stack *dest)
 void	push_a(t_stack *a, t_stack *b)
 {
 	push(b, a);
+	printf("pa\n");
 }
 
 
 void	push_b(t_stack *a, t_stack *b)
 {
 	push(a, b);
+	printf("pb\n");
 }
 
 

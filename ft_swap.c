@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:34:34 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 17:30:16 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/22 19:54:43 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	ft_swap(t_stack *stack)
 void	ft_swap_a(t_stack *a)
 {
 	ft_swap(a);
+	printf("sa\n");
 }
 
 void	ft_swap_b(t_stack *b)
 {
 	ft_swap(b);
+	printf("sb\n");
 }
