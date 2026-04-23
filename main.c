@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/22 20:39:23 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/23 07:08:43 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int	main(int ac, char **av)
 	ft_parse(av, stacks_ab);
 	a = &stacks_ab[0];
 	b = &stacks_ab[1];
+//	bubble_sort(a);
+	selection_sort(a, b);
 
-	printf("|||||||STACK_A||||||\n");
+/*	printf("|||||||STACK_A||||||\n");
 	int i = 0;
 	while (i < a->current_len)
 	{

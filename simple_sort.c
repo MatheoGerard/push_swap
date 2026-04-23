@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_sort.c                                      :+:      :+:    :+:   */
+/*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 19:32:25 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 20:55:31 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/23 07:08:30 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,38 @@ int	is_sorted(t_stack *a)
 	}
 	return (1);
 }
+/*
+void	check_max(t_stack *a, int *max)
+{
+	int	i;
 
-/*void	bubble_sort(t_stack *a)
+	i = 0;
+	while (i < a->current_len)
+	{
+		if(*max < a->nbrs[i])
+		{
+			*max = a->nbrs[i];
+		}
+		i++;
+	}
+}
+
+void	bubble_sort(t_stack *a)
 {
 	int	is_ok;
 	int	i;
+	int	max;
 
 	is_ok = 0;
+	check_max(a, &max);
+	i = 0;
 	while (is_ok == 0)
 	{
-		if (a->nbrs[0] > a->nbrs[1])
+		if (a->nbrs[i] == max)
+		{
+			rotate(a);
+		}
+		else if (a->nbrs[0] > a->nbrs[1])
 		{
 			is_ok = 0;
 			ft_swap_a(a);
@@ -47,16 +69,9 @@ int	is_sorted(t_stack *a)
 			rotate(a);
 		}
 		is_ok = is_sorted(a);
-		i = 0;
-		while (i < a->current_len)
-		{
-			printf("%d\n", a->nbrs[i]);
-			i++;
-		}
 	}
 }
 */
-
 void	refund(t_stack *a, t_stack *b)
 {
 	while (b->current_len > 0)
@@ -92,4 +107,3 @@ void	selection_sort(t_stack *a, t_stack *b)
 	}
 	refund(a, b);
 }
-
