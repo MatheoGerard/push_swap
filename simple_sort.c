@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 19:32:25 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/23 07:08:30 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/23 13:16:16 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,27 @@ void	check_max(t_stack *a, int *max)
 	}
 }
 
+void	check_min(t_stack *a, int *min)
+{
+	int	i;
+
+	i = ;
+	while (i < a->current_len)
+	{
+		if(*min > a->nbrs[i])
+		{
+			*min = a->nbrs[i];
+		}
+		i--;
+	}
+}
+
 void	bubble_sort(t_stack *a)
 {
 	int	is_ok;
 	int	i;
 	int	max;
+	int	min;
 
 	is_ok = 0;
 	check_max(a, &max);
@@ -58,6 +74,7 @@ void	bubble_sort(t_stack *a)
 		if (a->nbrs[i] == max)
 		{
 			rotate(a);
+			max = 
 		}
 		else if (a->nbrs[0] > a->nbrs[1])
 		{

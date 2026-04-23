@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/23 07:08:43 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/23 20:23:04 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	ft_parse(av, stacks_ab);
 	a = &stacks_ab[0];
 	b = &stacks_ab[1];
+	//quick_sort_test2(a, b);
 //	bubble_sort(a);
 	selection_sort(a, b);
 

@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/22 20:39:04 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/23 15:25:15 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	push_a(t_stack *a, t_stack *b);
 void	push_b(t_stack *a, t_stack *b);
 void	bubble_sort(t_stack *a);
 void	selection_sort(t_stack *a, t_stack *b);
+void	quick_sort_test2(t_stack *a, t_stack *b);
+int	is_sorted(t_stack *a);
 #endif
