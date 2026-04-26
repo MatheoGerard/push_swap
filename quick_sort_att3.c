@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:44:16 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/26 17:57:04 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/26 19:10:11 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	is_in_history(t_stack *pi_history, t_stack *a, t_stack *b, char a_or_b, int 
 	return (0);
 }
 
-int	partition(t_stack *a, t_stack *b, t_stack *pi, char a_or_b)
+int	partition(t_stack *a, t_stack *b, t_stack *pi, char a_or_b, int *range)//need ranges
 {
 	int	i;
 
