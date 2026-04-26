@@ -6,11 +6,10 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 13:36:51 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/23 13:42:47 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/26 18:49:09 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
+/*#include <stdio.h>
 
 void swap(int* a, int* b) {
     int temp = *a;
@@ -59,7 +58,7 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-int main() {
+/*int main() {
   
     int arr[] = { 4, 2, 5, 3, 1 };
     int n = sizeof(arr) / sizeof(arr[0]);
@@ -71,5 +70,5 @@ int main() {
         printf("%d ", arr[i]);
 
     return 0;
-}
+}*/
 

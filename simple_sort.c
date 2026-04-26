@@ -6,18 +6,20 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 19:32:25 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/23 13:16:16 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/26 16:40:15 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	is_sorted(t_stack *a)
+int	is_sorted(t_stack *a, t_stack *b)
 {
 	int	i;
 
 	i = 0;
+	if (b->current_len != 0)
+		return (0);
 	while (i < a->current_len - 1)
 	{
 		if (a->nbrs[i] > a->nbrs[i + 1])
@@ -93,7 +95,7 @@ void	refund(t_stack *a, t_stack *b)
 {
 	while (b->current_len > 0)
 	{
-		push_a(a, b);
+		push(a, b, 'a');
 	}
 }
 
@@ -117,10 +119,10 @@ void	selection_sort(t_stack *a, t_stack *b)
 		i = 0;
 		while (i < min)
 		{
-			rotate(a);
+			rotate(a, b, 'a');
 			i++;
 		}
-		push_b(a, b);
+		push(a, b, 'b');
 	}
 	refund(a, b);
 }

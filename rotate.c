@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/22 20:49:10 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/26 15:38:05 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,21 @@ void	pushdown_tmp(t_stack *stack)
 	}
 }
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *a, t_stack *b, char stack_in)
 {
 	int	end;
+	t_stack	*stack;
 
+	if (stack_in == 'a')
+		stack = a;
+	else
+		stack = b;
 	if (stack->current_len <= 1)
-	{
 		printf("%s\n", "1 or no element in stack!!!");
-	}
 	end = stack->current_len - 1;
 	pushup_tmp(stack);
 	stack->nbrs[end] = stack->tmp;
-	printf("ra\n");
+	printf("r%c\n", stack_in);
 }
 
 void	rrotate(t_stack *stack)

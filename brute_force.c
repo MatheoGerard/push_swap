@@ -6,11 +6,11 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 15:11:24 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/23 19:04:42 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/26 15:38:59 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap"
+/*
+#include "push_swap.h"
 
 t_stack	*ft_initdup(t_stack *ab, t_stack *dupab)
 {
@@ -71,7 +71,7 @@ void	big_brute(t_stack *ab, int low, int in_a, int count, char **operations)
 		j = 0;
 		while (j < 6) // number of operations
 		{
-			do_silentoperation[j](ab, operations); //shouldn't be difficult with if elses and silent ra, rb, pa, ..
+			do_silentoperation(ab, operations, j); //shouldn't be difficult with if elses and silent ra, rb, pa, ..
 			if (p_sorted(ab[0], low, low + 8, in_a))
 				return ;
 			j++;
@@ -93,4 +93,4 @@ void	brute_force(t_stack *ab, int low, int in_a, char **operations) //need to ma
 			big_brute(ab, low, in_a, count, operations);
 			count++;
 		}
-}
+}*/

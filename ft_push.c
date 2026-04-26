@@ -6,13 +6,13 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 20:40:52 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/26 19:07:08 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-void	push(t_stack *src, t_stack *dest)
+void	pushing(t_stack *src, t_stack *dest)
 {
 	int	len;
 
@@ -30,17 +30,20 @@ void	push(t_stack *src, t_stack *dest)
 	dest -> current_len += 1;
 }
 
-void	push_a(t_stack *a, t_stack *b)
+void	push(t_stack *a, t_stack *b, char in_stack)
 {
-	push(b, a);
-	printf("pa\n");
+	if (in_stack == 'a')
+		pushing(b, a);
+	else
+		pushing(a, b);
+	printf("p%c\n", in_stack);
 }
 
-
-void	push_b(t_stack *a, t_stack *b)
+void	pushfrom(t_stack *a, t_stack *b, char in_stack)
 {
-	push(a, b);
-	printf("pb\n");
+	if (in_stack == 'a')
+		in_stack = 'b';
+	else
+		in_stack = 'a';
+	push(a, b, in_stack);
 }
-
-
