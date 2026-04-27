@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 19:32:25 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/27 10:07:32 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/27 14:58:31 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,9 @@ void	selection_sort(t_stack *a, t_stack *b)
 		{
 			if (a->current_len - min < min)
 			{
-				rrotate(a);
+				rrotate(a, b, 'a');
 			}
-			else
+else
 			{
 				rotate(a, b, 'a');
 			}

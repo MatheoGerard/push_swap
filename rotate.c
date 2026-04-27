@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/27 10:39:21 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 14:59:12 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	rrotate(t_stack *a, t_stack *b, char in_stack)
 {
 	t_stack	*stack;
 
-	if (stack_in == 'a')
+	if (in_stack == 'a')
 		stack = a;
 	else
 		stack = b;

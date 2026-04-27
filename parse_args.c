@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/27 10:17:18 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 14:50:45 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 	a = (t_stack *)malloc(sizeof(t_stack));
 	b = (t_stack *)malloc(sizeof(t_stack));
 	a->nbrs = (int *)malloc(i * sizeof(int));
-	b->nbrs = (int *)malloc(i, sizeof(int));
+	b->nbrs = (int *)malloc(i * sizeof(int));
 	a->index = (int *)malloc(i * sizeof(int));
-	b->index = (int *)malloc(i, sizeof(int));
+	b->index = (int *)malloc(i * sizeof(int));
 	if (a->nbrs == NULL || b->nbrs == NULL)
 		return (NULL);
 	a->current_len = i;

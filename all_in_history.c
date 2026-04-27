@@ -6,10 +6,10 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 17:22:29 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/26 17:30:59 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 15:00:05 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include "push_swap.h"
 
 int	all_in_history(t_stack *a, t_stack *b, t_stack *pi, char in_stack)
@@ -37,3 +37,4 @@ int	all_in_history(t_stack *a, t_stack *b, t_stack *pi, char in_stack)
 	}
 	return (1);
 }
+*/

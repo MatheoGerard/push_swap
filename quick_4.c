@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_sort_att3.c                                  :+:      :+:    :+:   */
+/*   quick_4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:44:16 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/26 19:10:11 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 14:52:53 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include "push_swap.h"
 
-/*int	get_average_partition(t_stack s, int low, int high*/
+int	get_average_partition(t_stack s, int low, int high
 
 t_stack	*init_pivot_history(t_stack *a)
 {
@@ -100,8 +100,9 @@ void	quicksort(t_stack *a, t_stack *b, t_stack *pi, char in_stack)
 		else
 			in_stack = 'a';
 		/*if (!all_in_history(a, b, pi, in_stack))
-			quicksort(a, b, pi, in_stack);*/
+			quicksort(a, b, pi, in_stack);
 	}
 		
 
 }
+*/
