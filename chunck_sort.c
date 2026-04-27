@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:18:36 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/27 17:53:04 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/28 01:23:53 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,52 @@ int	greater_nb_than_base(t_stack *a, int base_nb)
 	return (count);
 }
 
+int	check_range(int max, t_stack *a, t_stack *b)
+{
+	int	i;
+
+	i = 0;
+	while (b->nbrs[i] != max)
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	check_for_max(t_stack *a, t_stack *b)
+{
+	int	i;
+	int	max;
+
+	i = 0;
+	while (b->current_len > 0)
+	{
+		i = 0;
+		max = b->nbrs[0];
+		while (i < b->current_len)
+		{
+			if (b->nbrs[i] > max)
+				max = b->nbrs[i];
+			i++;
+		}
+		if (check_range(max, a, b) < (b->current_len / 2) + 1)
+		{
+			while (b->nbrs[0] != max)
+			{
+				rotate(a, b, 'b');
+			}
+		}
+		else
+		{
+			while (b->nbrs[0] != max)
+			{
+				rrotate(a, b, 'b');
+			}
+		}
+		push(a, b, 'a');
+	}
+}
+
 void	chunck_divide(t_stack *a, t_stack *b)
 {
 	int	base_nb;
@@ -114,7 +160,10 @@ void	chunck_divide(t_stack *a, t_stack *b)
 		i = 0;
 		j++;
 	}
+	check_for_max(a, b);
 }
+
+
 /*
 int	check_max_chunck(t_stack *a, int fork_size)
 {
