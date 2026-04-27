@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:18:36 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/27 16:19:51 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/27 17:53:04 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,19 @@ void	index_select(t_stack *a)
 	int	i;
 	int	j;
 
-	min = 0;
 	i = 0;
-	while (i < a->current_len - 1)
+	while (i < a->current_len)
 	{
-		j = i + 1;
+		a->index[i] = 0;
+		j = 0;
 		while (j < a->current_len)
 		{
-			if (a->nbrs[min] > a->nbrs[j]) 
+			if (a->nbrs[i] > a->nbrs[j]) 
 			{
-				min = j;
+				a->index[i] += 1;
 			}
 			j++;
 		}
-		a->index[min] = i;
 		i++;
 	}
 }
@@ -70,7 +69,7 @@ int	greater_nb_than_base(t_stack *a, int base_nb)
 	i = 0;
 	while (i < a->current_len)
 	{
-		if (a->nbrs[i] > base_nb)
+		if (a->index[i] < base_nb)
 		{
 			count++;
 		}
@@ -91,18 +90,18 @@ void	chunck_divide(t_stack *a, t_stack *b)
 	i = 0;
 	j = 1;
 	index_select(a);
-	greater = greater_nb_than_base(a, a->nbrs[0]);
 	fork_size = ft_sqrt(a->current_len);
 	while (a->current_len > 0)
 	{
 		base_nb = fork_size * j;
-		if (fork_size < greater)
+		greater = greater_nb_than_base(a, base_nb);
+		if (fork_size <= greater)
 			limit = fork_size;
 		else
 			limit = greater;
 		while (i < limit)
 		{
-			if (a->index[i] < base_nb)
+			if (a->index[0] < base_nb)
 			{
 				push(a, b, 'b');
 				i++;
@@ -112,7 +111,6 @@ void	chunck_divide(t_stack *a, t_stack *b)
 				rotate(a, b, 'a');
 			}
 		}
-		greater = greater_nb_than_base(a, base_nb);
 		i = 0;
 		j++;
 	}
