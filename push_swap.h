@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/26 19:07:41 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 13:53:07 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_stack
 {
 	int	current_len;
 	int	*nbrs;
+	int	*index;
 	int	tmp;
 }			t_stack;
 
@@ -39,4 +40,5 @@ int	partition(t_stack *a, t_stack *b, t_stack *pi, char a_or_b);
 int	all_in_history(t_stack *a, t_stack *b, t_stack *pi, char in_stack);
 void	quicksort(t_stack *a, t_stack *b, t_stack *pi, char in_stack);
 int	is_in_history(t_stack *pi_history, t_stack *a, t_stack *b, char a_or_b, int j);
+void	chunck_divide(t_stack *a, t_stack *b);
 #endif

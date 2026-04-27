@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/26 18:48:11 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:14:35 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ int	main(int ac, char **av)
 	t_stack	stacks_ab[2];
 	t_stack	*a;
 	t_stack	*b;
-	t_stack *pi;
+//	t_stack *pi;
 
 	ft_parse(av, stacks_ab);
 	a = &stacks_ab[0];
 	b = &stacks_ab[1];
+	chunck_divide(a, b);
 	//quick_sort_test2(a, b);
 //	bubble_sort(a);
-	selection_sort(a, b);
+//	selection_sort(a, b);
 	/*pi = init_pivot_history(a);
 	if (pi == NULL)
 		return (-7);

@@ -6,13 +6,40 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 19:32:25 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/26 16:40:15 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 10:07:32 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
+int	is_a_sorted(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->current_len - 1)
+	{
+		if (a->nbrs[i] > a->nbrs[i + 1])
+		{
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	is_far(int *min, t_stack *a)
+{
+	if (*min > (a->current_len / 2) + 1)
+	{
+		*min = a->current_len - *min;
+		return (1);
+	}
+	return (0);
+}
+
+/*
 int	is_sorted(t_stack *a, t_stack *b)
 {
 	int	i;
@@ -30,6 +57,7 @@ int	is_sorted(t_stack *a, t_stack *b)
 	}
 	return (1);
 }
+*/
 /*
 void	check_max(t_stack *a, int *max)
 {
@@ -104,11 +132,11 @@ void	selection_sort(t_stack *a, t_stack *b)
 	int	i;
 	int	min;
 
-	while (a->current_len > 0)
+	while (!is_a_sorted(a))
 	{
 		i = 1;
 		min = 0;
-		while (i < a->current_len)
+		while (!is_a_sorted(a) && i < a->current_len)
 		{
 			if (a->nbrs[i] < a->nbrs[min])
 			{
@@ -117,12 +145,20 @@ void	selection_sort(t_stack *a, t_stack *b)
 			i++;
 		}
 		i = 0;
-		while (i < min)
+		while (!is_a_sorted(a) && i < min && i < a->current_len - min)
 		{
-			rotate(a, b, 'a');
+			if (a->current_len - min < min)
+			{
+				rrotate(a);
+			}
+			else
+			{
+				rotate(a, b, 'a');
+			}
 			i++;
 		}
-		push(a, b, 'b');
+		if (!is_a_sorted(a))
+			push(a, b, 'b');
 	}
 	refund(a, b);
 }

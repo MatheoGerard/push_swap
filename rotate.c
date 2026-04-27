@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/26 15:38:05 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 09:55:30 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ void	rrotate(t_stack *stack)
 	}
 	pushdown_tmp(stack);
 	stack->nbrs[0] = stack->tmp;
-	printf("rr\n");
+	printf("rra\n");
 }
