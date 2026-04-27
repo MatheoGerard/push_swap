@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/26 19:07:08 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 10:40:25 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	pushing(t_stack *src, t_stack *dest)
 	pushdown_tmp(dest);
 	dest->nbrs[len] = dest->tmp;
 	dest->nbrs[0] = src->tmp;
+	dest->index[len] = dest->tmpi;
+	dest->index[0] = src->tmpi;
 	src -> current_len -= 1;
 	dest -> current_len += 1;
 }

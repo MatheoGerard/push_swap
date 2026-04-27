@@ -6,13 +6,13 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:34:34 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/22 19:54:43 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/04/27 10:30:25 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-void	ft_swap(t_stack *stack)
+void	ft_swaop(t_stack *stack)
 {
 	if (stack->current_len == 1)
 	{
@@ -22,16 +22,16 @@ void	ft_swap(t_stack *stack)
 	stack->tmp = stack->nbrs[0];
 	stack->nbrs[0] = stack->nbrs[1];
 	stack->nbrs[1] = stack->tmp;
+	stack->tmpi = stack->index[0];
+	stack->index[0] = stack->index[1];
+	stack->index[1] = stack->tmpi;
 }
 
-void	ft_swap_a(t_stack *a)
+void	ft_swap(t_stack *a, t_stack *b, char in_stack)
 {
-	ft_swap(a);
-	printf("sa\n");
-}
-
-void	ft_swap_b(t_stack *b)
-{
-	ft_swap(b);
-	printf("sb\n");
+	if (in_stack == 'a')
+		ft_swaop(a);
+	else
+		ft_swaop(a);
+	ft_printf("s%c\n", in_stack);
 }

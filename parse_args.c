@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/22 17:25:35 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/04/27 10:17:18 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 	a = (t_stack *)malloc(sizeof(t_stack));
 	b = (t_stack *)malloc(sizeof(t_stack));
 	a->nbrs = (int *)malloc(i * sizeof(int));
-	b->nbrs = (int *)ft_calloc(i, sizeof(int));
+	b->nbrs = (int *)malloc(i, sizeof(int));
+	a->index = (int *)malloc(i * sizeof(int));
+	b->index = (int *)malloc(i, sizeof(int));
 	if (a->nbrs == NULL || b->nbrs == NULL)
 		return (NULL);
 	a->current_len = i;
@@ -61,6 +63,7 @@ void	ft_parse(char **argv, t_stack *stacks_ab)
 	while (argv[i])
 	{
 		stacks_ab[0].nbrs[i] = ft_atoi(argv[i]);
+		stacks_ab[0].index[i] = i;
 		i++;
 	}
 }
