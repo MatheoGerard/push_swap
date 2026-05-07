@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/28 01:25:18 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/07 04:36:17 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,32 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	t_stack *pi;
 
-	ft_parse(av, stacks_ab);
+	if (flag_detect(av) > 3)
+		ft_parse(av, stacks_ab, 0);
+	else
+		ft_parse(av, stacks_ab, 1);
 	a = &stacks_ab[0];
 	b = &stacks_ab[1];
-	chunck_divide(a, b);
+	if (flag_detect(av) == 0)
+	{
+		selection_sort(a, b);
+		printf("SIMPLE SORT\n");
+	}
+	else if (flag_detect(av) == 1)
+	{
+		chunck_divide(a, b);
+		printf("MEDIUM SORT\n");
+	}
+	else if (flag_detect(av) == 4)
+	{
+		printf("Error\n");
+		return (0);
+	}
+
 
 
 	//quick_sort_test2(a, b);
 //	bubble_sort(a);
-	//selection_sort(a, b);
 	/*pi = init_pivot_history(a);
 	if (pi == NULL)
 		return (-7);
