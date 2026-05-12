@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:18:36 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/28 01:23:53 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 17:32:17 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	check_range(int max, t_stack *a, t_stack *b)
 	return (i);
 }
 
-int	check_for_max(t_stack *a, t_stack *b)
+void	check_for_max(t_stack *a, t_stack *b)
 {
 	int	i;
 	int	max;

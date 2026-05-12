@@ -6,9 +6,11 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/08 19:13:41 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 17:39:03 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int	ft_strcmp(char *argv, char *flag)
 {
@@ -24,11 +26,10 @@ int	ft_strcmp(char *argv, char *flag)
 	return (1);
 }
 
-int	flag_detect(char **argv)
+void	flag_detect(char **argv, int mode_return[])
 {
 	int	i;
 	int	j;
-	int	mode_return[2];
 
 	i = 1;
 	j = 0;
@@ -36,41 +37,72 @@ int	flag_detect(char **argv)
 	mode_return[1] = -1;
 	while (i < 3)
 	{
-		if (ft_strcmp(argv[i], "--bench"))
+		if (ft_is_int(argv[i]))
 			mode_return[j++] = 0;
-		else if (ft_strcmp(argv[i], "--simple"))
+		else if (ft_strcmp(argv[i], "--bench"))
 			mode_return[j++] = 1;
-		else if (ft_strcmp(argv[i], "--medium"))
+		else if (ft_strcmp(argv[i], "--simple"))
 			mode_return[j++] = 2;
-		else if (ft_strcmp(argv[i], "--complex"))
+		else if (ft_strcmp(argv[i], "--medium"))
 			mode_return[j++] = 3;
-		else if (ft_strcmp(argv[i], "--adaptive"))
+		else if (ft_strcmp(argv[i], "--complex"))
 			mode_return[j++] = 4;
+		else if (ft_strcmp(argv[i], "--adaptive"))
+			mode_return[j++] = 5;
 		i++;
 	}
-	return (mode_return);
 }
 
-char	flag_validation(char **argv)
+void	do_simple(char** argv, t_stack *stacks_ab, int is_bench)
 {
-	int	i;
-	int	is_int;
-
-	i = 0;
-	is_int = 0;
-	while (i > 3)
+	if (is_bench)
 	{
-		if (ft_is_int(argv[i]))
-		{
-			is_int = 1;
-			continue ;
-		}
-		else if (flag_detect(argv[i]) && is_int)
-		{
-			return (0);
-		}
+		//bench();
+		ft_parse(argv, stacks_ab, 1, 1);
 	}
-	if (flag[0] == flag[1])
-		return (0);
-	return (1);
+	else
+		ft_parse(argv, stacks_ab, 1, 0);
+	selection_sort(&stacks_ab[0], &stacks_ab[1]);
 }
+
+void	do_medium(char** argv, t_stack *stacks_ab, int is_bench)
+{
+	if (is_bench)
+	{
+		//bench();
+		ft_parse(argv, stacks_ab, 1, 1);
+	}
+	else
+		ft_parse(argv, stacks_ab, 1, 0);
+	chunck_divide(&stacks_ab[0], &stacks_ab[1]);
+}
+
+void	flag_validation(char **argv, int ac, t_stack *stacks_ab)
+{
+	int	flag_find[2];
+	int	is_bench;
+
+	flag_detect(argv, flag_find);
+	is_bench = 0;
+//	if (flag_find[0] == 0 && flag_find[1] != 0)
+//		return (do_ERROR());
+//	if (flag_find[0] == flag_find[1])
+//		return (ERROR());
+	if (flag_find[0] == 1 || flag_find[1] == 1)
+		is_bench = 1;//???
+	if (flag_find[0] == 2 || flag_find[1] == 2)
+		do_simple(argv, stacks_ab, is_bench);//???
+	if (flag_find[0] == 3 || flag_find[1] == 3)
+		do_medium(argv, stacks_ab, is_bench);//???
+/*	if (flag_find[0] == 4 || flag_find[1] == 4)
+		complex(is_bench);//???
+	if (flag_find[0] == 5 || flag_find[1] == 5)
+		adaptive(is_bench);//???
+*/
+}
+
+
+
+
+
+

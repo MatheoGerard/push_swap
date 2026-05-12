@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/07 07:19:01 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 17:29:08 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,22 @@ int	main(int ac, char **av)
 	t_stack	*b;
 	t_stack *pi;
 
-	if (flag_detect(av) > 4)
-		ft_parse(av, stacks_ab, 0);
-	else
-		ft_parse(av, stacks_ab, 1);
+	flag_validation(av, ac, stacks_ab);
+//	if (flag_detect(av) > 4)
+//		ft_parse(av, stacks_ab, 0);
+//	else
+//		ft_parse(av, stacks_ab, 1);
 	a = &stacks_ab[0];
 	b = &stacks_ab[1];
-	if (flag_detect(av) == 0)
-		selection_sort(a, b);
-	else if (flag_detect(av) == 1)
-		chunck_divide(a, b);
-	else if (flag_detect(av) == 5)
-	{
-		printf("Error\n");
-		return (0);
-	}
+//	if (flag_detect(av) == 0)
+//		selection_sort(a, b);
+//	else if (flag_detect(av) == 1)
+//		chunck_divide(a, b);
+//	else if (flag_detect(av) == 5)
+//	{
+//		printf("Error\n");
+//		return (0);
+//	}
 
 
 
