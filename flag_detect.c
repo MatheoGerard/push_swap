@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 00:00:04 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 01:47:17 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,9 @@ void	flag_validation(char **argv, int ac, t_stack *stacks_ab)
 	if (flag_find[0] == 1 || flag_find[1] == 1)
 		is_bench = 1;//???
 	if (flag_find[0] == 2 || flag_find[1] == 2)
-		do_simple(argv, stacks_ab, is_bench);//???
+		do_simple(argv, stacks_ab, is_bench, 1);//???
 	if (flag_find[0] == 3 || flag_find[1] == 3)
-		do_medium(argv, stacks_ab, is_bench);//???
+		do_medium(argv, stacks_ab, is_bench, 0);//???
 /*	if (flag_find[0] == 4 || flag_find[1] == 4)
 		complex(is_bench);//???
 	if (flag_find[0] == 5 || flag_find[1] == 5)

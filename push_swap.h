@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/12 22:37:37 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 01:45:52 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void	chunck_divide(t_stack *ab, t_op_count *values, int is_bench);
 void	flag_detect(char **argv, int mode_return[]);
 void	flag_validation(char **argv, int ac, t_stack *stacks_ab);
 int	ft_is_int(char *str);
-void	do_print(t_op_count *values, int is_bench);
+void	do_print(t_op_count *values, int is_bench, char *strat);
 #endif
