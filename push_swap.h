@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/12 17:31:33 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 20:31:57 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@ typedef struct s_stack
 	int	tmp;
 	int	tmpi;
 }			t_stack;
+
+typedef struct s_op_count
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}			t_op_count;
 
 void	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench);
 void	ft_swap(t_stack *a, t_stack *b, char in_stack);
