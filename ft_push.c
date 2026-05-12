@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/27 10:40:25 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/12 23:07:39 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,25 @@ void	pushing(t_stack *src, t_stack *dest)
 	dest -> current_len += 1;
 }
 
-void	push(t_stack *a, t_stack *b, char in_stack)
+void	push(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)
 {
-	if (in_stack == 'a')
-		pushing(b, a);
+	pushing(&stacks_ab['b' - in_stack], &stacks_ab[in_stack - 'a']);
+	if (is_bench)
+	{
+		if (in_stack == 'a')
+			values->pb += 1;
+		else
+			values->pa += 1;
+	}
 	else
-		pushing(a, b);
-	printf("p%c\n", in_stack);
+		printf("p%c\n", in_stack);
 }
 
-void	pushfrom(t_stack *a, t_stack *b, char in_stack)
+void	pushfrom(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)
 {
 	if (in_stack == 'a')
 		in_stack = 'b';
 	else
 		in_stack = 'a';
-	push(a, b, in_stack);
+	push(stacks_ab, in_stack, is_bench, values);
 }

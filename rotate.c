@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/27 14:59:12 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 21:28:22 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,38 +44,46 @@ void	pushdown_tmp(t_stack *stack)
 	}
 }
 
-void	rotate(t_stack *a, t_stack *b, char stack_in)
+void	rotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
 {
 	int	end;
 	t_stack	*stack;
 
-	if (stack_in == 'a')
-		stack = a;
-	else
-		stack = b;
+	stack = &stacks_ab[stack_in - 'a'];//????
 	if (stack->current_len <= 1)
-		printf("%s\n", "1 or no element in stack!!!");
+		return ((void)printf("%s\n", "1 or no element in stack!!!"));
 	end = stack->current_len - 1;
 	pushup_tmp(stack);
 	stack->nbrs[end] = stack->tmp;
 	stack->index[end] = stack->tmpi;
-	printf("r%c\n", stack_in);
+	if (is_bench)
+	{
+		if (stack_in == 'a')
+			values->ra += 1;
+		else
+			values->rb += 1;
+	}
+	else
+		printf("r%c\n", stack_in);
 }
 
-void	rrotate(t_stack *a, t_stack *b, char in_stack)
+void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
 {
 	t_stack	*stack;
 
-	if (in_stack == 'a')
-		stack = a;
-	else
-		stack = b;
+	stack = &stacks_ab[stack_in - 'a'];//????
 	if (stack->current_len <= 1)
-	{
-		printf("%s\n", "1 or no element in stack!!!");
-	}
+		return ((void)printf("%s\n", "1 or no element in stack!!!"));
 	pushdown_tmp(stack);
 	stack->nbrs[0] = stack->tmp;
 	stack->index[0] = stack->tmpi;
-	printf("rr%c\n", in_stack);
+	if (is_bench)
+	{
+		if (stack_in == 'a')
+			values->rra += 1;
+		else
+			values->rrb += 1;
+	}
+	else
+		printf("rr%c\n", stack_in);
 }

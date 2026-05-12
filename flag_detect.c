@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/12 17:39:03 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 00:00:04 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,34 @@ void	flag_detect(char **argv, int mode_return[])
 	}
 }
 
-void	do_simple(char** argv, t_stack *stacks_ab, int is_bench)
+t_op_count	*init_values(void)
 {
-	if (is_bench)
-	{
-		//bench();
-		ft_parse(argv, stacks_ab, 1, 1);
-	}
-	else
-		ft_parse(argv, stacks_ab, 1, 0);
-	selection_sort(&stacks_ab[0], &stacks_ab[1]);
+	t_op_count	*values;
+
+	values = (t_op_count *)malloc(sizeof(t_op_count));
+	if (!values)
+		return (NULL);
+	values->pa = 0;
+	values->pb = 0;
+	values->ra = 0;
+	values->rb = 0;
+	values->rr = 0;
+	values->rra = 0;
+	values->rrb = 0;
+	values->rrr = 0;
+	values->sa = 0;
+	values->sb = 0;
+	values->ss = 0;
+	return (values);
 }
 
-void	do_medium(char** argv, t_stack *stacks_ab, int is_bench)
+void	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 {
+	t_op_count	*values;
+
+	values = init_values();
+	if (!values)
+		return ;
 	if (is_bench)
 	{
 		//bench();
@@ -74,7 +88,30 @@ void	do_medium(char** argv, t_stack *stacks_ab, int is_bench)
 	}
 	else
 		ft_parse(argv, stacks_ab, 1, 0);
-	chunck_divide(&stacks_ab[0], &stacks_ab[1]);
+	selection_sort(stacks_ab, is_bench, values);
+	if (is_adpt)
+		do_print(values, is_bench, "Adaptive / O(n²)");
+	else
+		do_print(values, is_bench, "Simple / O(n²)");
+}
+
+void	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
+{
+	t_op_count	*values;
+
+	values = init_values();
+	if (is_bench)
+	{
+		//bench();
+		ft_parse(argv, stacks_ab, 1, 1);
+	}
+	else
+		ft_parse(argv, stacks_ab, 1, 0);
+	chunck_divide(stacks_ab, values, is_bench);
+	if (is_adpt)
+		do_print(values, is_bench, "Adaptive / O(n√n)");
+	else
+		do_print(values, is_bench, "Medium / O(n√n)");
 }
 
 void	flag_validation(char **argv, int ac, t_stack *stacks_ab)

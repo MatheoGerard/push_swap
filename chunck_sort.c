@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:18:36 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/12 17:32:17 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 22:41:22 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	check_range(int max, t_stack *a, t_stack *b)
 	return (i);
 }
 
-void	check_for_max(t_stack *a, t_stack *b)
+void	check_for_max(t_stack *a, t_stack *b, t_op_count *values, int is_bench)
 {
 	int	i;
 	int	max;
@@ -110,21 +110,19 @@ void	check_for_max(t_stack *a, t_stack *b)
 		{
 			while (b->nbrs[0] != max)
 			{
-				rotate(a, b, 'b');
+				rotate(a, 'b', values, is_bench);
 			}
 		}
 		else
 		{
 			while (b->nbrs[0] != max)
-			{
-				rrotate(a, b, 'b');
-			}
+				rrotate(a, 'b', values, is_bench);
 		}
-		push(a, b, 'a');
+		push(a, 'a', is_bench, values);
 	}
 }
 
-void	chunck_divide(t_stack *a, t_stack *b)
+void	chunck_divide(t_stack *ab, t_op_count *values, int is_bench)
 {
 	int	base_nb;
 	int	fork_size;
@@ -135,32 +133,30 @@ void	chunck_divide(t_stack *a, t_stack *b)
 
 	i = 0;
 	j = 1;
-	index_select(a);
-	fork_size = ft_sqrt(a->current_len);
-	while (a->current_len > 0)
+	index_select(&ab[0]);
+	fork_size = ft_sqrt((&ab[0])->current_len);
+	while ((&ab[0])->current_len > 0)
 	{
 		base_nb = fork_size * j;
-		greater = greater_nb_than_base(a, base_nb);
+		greater = greater_nb_than_base(&ab[0], base_nb);
 		if (fork_size <= greater)
 			limit = fork_size;
 		else
 			limit = greater;
 		while (i < limit)
 		{
-			if (a->index[0] < base_nb)
+			if ((&ab[0])->index[0] < base_nb)
 			{
-				push(a, b, 'b');
+				push(ab, 'b', is_bench, values);
 				i++;
 			}
 			else
-			{
-				rotate(a, b, 'a');
-			}
+				rotate(ab, 'a', values, is_bench);
 		}
 		i = 0;
 		j++;
 	}
-	check_for_max(a, b);
+	check_for_max(ab, &ab[1], values, is_bench);
 }
 
 

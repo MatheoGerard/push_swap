@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 19:32:25 by mgerard           #+#    #+#             */
-/*   Updated: 2026/04/28 00:52:53 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/12 23:26:30 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_a_sorted(t_stack *a)
 	return (1);
 }
 
-int	is_far(int *min, t_stack *a)
+/*int	is_far(int *min, t_stack *a)
 {
 	if (*min > (a->current_len / 2) + 1)
 	{
@@ -37,7 +37,7 @@ int	is_far(int *min, t_stack *a)
 		return (1);
 	}
 	return (0);
-}
+}*/
 
 /*
 int	is_sorted(t_stack *a, t_stack *b)
@@ -119,46 +119,45 @@ void	bubble_sort(t_stack *a)
 	}
 }
 */
-void	refund(t_stack *a, t_stack *b)
+void	refund(t_stack *ab, int is_bench, t_op_count *values)
 {
-	while (b->current_len > 0)
+	while ((&ab[1])->current_len > 0)
 	{
-		push(a, b, 'a');
+		push(ab, 'a', is_bench, values);
 	}
 }
 
-void	selection_sort(t_stack *a, t_stack *b)
+void	push_min(t_stack *ab, int is_bench, t_op_count *values)
+{
+	if (!is_a_sorted(&ab[0]))
+			push(ab, 'b', is_bench, values);
+}
+
+void	selection_sort(t_stack *ab, int is_bench, t_op_count *values)
 {
 	int	i;
 	int	min;
 
-	while (!is_a_sorted(a))
+	while (!is_a_sorted(&ab[0]))
 	{
 		i = 1;
 		min = 0;
-		while (!is_a_sorted(a) && i < a->current_len)
+		while (!is_a_sorted(&ab[0]) && i < (&ab[0])->current_len)
 		{
-			if (a->nbrs[i] < a->nbrs[min])
-			{
+			if ((&ab[0])->nbrs[i] < (&ab[0])->nbrs[min])
 				min = i;
-			}
 			i++;
 		}
 		i = 0;
-		while (!is_a_sorted(a) && i < min && i < a->current_len - min)
+		while (!is_a_sorted(&ab[0]) && i < min && i < (&ab[0])->current_len - min)
 		{
-			if (a->current_len - min < min)
-			{
-				rrotate(a, b, 'a');
-			}
+			if ((&ab[0])->current_len - min < min)
+				rrotate(ab, 'a', values, is_bench);
 			else
-			{
-				rotate(a, b, 'a');
-			}
+				rotate(ab, 'a', values, is_bench);
 			i++;
 		}
-		if (!is_a_sorted(a))
-			push(a, b, 'b');
+		push_min(ab, is_bench, values);
 	}
-	refund(a, b);
+	refund(ab, is_bench, values);
 }
