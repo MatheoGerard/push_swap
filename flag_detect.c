@@ -6,11 +6,12 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 01:47:17 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 04:01:15 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	ft_strcmp(char *argv, char *flag)
 {
@@ -53,13 +54,14 @@ void	flag_detect(char **argv, int mode_return[])
 	}
 }
 
-t_op_count	*init_values(void)
+t_op_count	*init_values(int is_adpt, t_stack *stacks_ab)
 {
 	t_op_count	*values;
 
 	values = (t_op_count *)malloc(sizeof(t_op_count));
 	if (!values)
 		return (NULL);
+	values->disorder_val = disorder(stacks_ab);
 	values->pa = 0;
 	values->pb = 0;
 	values->ra = 0;
@@ -78,16 +80,19 @@ void	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 {
 	t_op_count	*values;
 
-	values = init_values();
+	if (!is_adpt)
+	{
+		if (is_bench)
+		{
+			//bench();
+			ft_parse(argv, stacks_ab, 1, 1);
+		}
+		else
+			ft_parse(argv, stacks_ab, 1, 0);
+	}
+	values = init_values(is_adpt, stacks_ab);
 	if (!values)
 		return ;
-	if (is_bench)
-	{
-		//bench();
-		ft_parse(argv, stacks_ab, 1, 1);
-	}
-	else
-		ft_parse(argv, stacks_ab, 1, 0);
 	selection_sort(stacks_ab, is_bench, values);
 	if (is_adpt)
 		do_print(values, is_bench, "Adaptive / O(n²)");
@@ -99,7 +104,28 @@ void	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 {
 	t_op_count	*values;
 
-	values = init_values();
+	if (!is_adpt)
+	{
+		if (is_bench)
+		{
+			//bench();
+			ft_parse(argv, stacks_ab, 1, 1);
+		}
+		else
+			ft_parse(argv, stacks_ab, 1, 0);
+	}
+	values = init_values(is_adpt, stacks_ab);
+	chunck_divide(stacks_ab, values, is_bench);
+	if (is_adpt)
+		do_print(values, is_bench, "Adaptive / O(n√n)");
+	else
+		do_print(values, is_bench, "Medium / O(n√n)");
+}
+
+void	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench)
+{
+	float	disorder_value;
+
 	if (is_bench)
 	{
 		//bench();
@@ -107,11 +133,19 @@ void	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 	}
 	else
 		ft_parse(argv, stacks_ab, 1, 0);
-	chunck_divide(stacks_ab, values, is_bench);
-	if (is_adpt)
-		do_print(values, is_bench, "Adaptive / O(n√n)");
-	else
-		do_print(values, is_bench, "Medium / O(n√n)");
+	disorder_value = disorder(stacks_ab);
+	if (disorder_value < 0)
+		return ;
+	if (disorder_value <= .2f)
+	{
+		do_simple(argv, stacks_ab, is_bench, 1);
+		return ;
+	}
+	if (disorder_value <= .5f)
+	{
+		do_medium(argv, stacks_ab, is_bench, 1);
+		return ;
+	}
 }
 
 void	flag_validation(char **argv, int ac, t_stack *stacks_ab)
@@ -128,14 +162,13 @@ void	flag_validation(char **argv, int ac, t_stack *stacks_ab)
 	if (flag_find[0] == 1 || flag_find[1] == 1)
 		is_bench = 1;//???
 	if (flag_find[0] == 2 || flag_find[1] == 2)
-		do_simple(argv, stacks_ab, is_bench, 1);//???
+		do_simple(argv, stacks_ab, is_bench, 0);//???
 	if (flag_find[0] == 3 || flag_find[1] == 3)
 		do_medium(argv, stacks_ab, is_bench, 0);//???
-/*	if (flag_find[0] == 4 || flag_find[1] == 4)
-		complex(is_bench);//???
-	if (flag_find[0] == 5 || flag_find[1] == 5)
-		adaptive(is_bench);//???
-*/
+//	if (flag_find[0] == 4 || flag_find[1] == 4)
+//		complex(is_bench);//???
+	if ((flag_find[0] == 5 || flag_find[1] == 5) || (flag_find[0] == 0 && flag_find[1] == 0))
+		do_adaptive(argv, stacks_ab, is_bench);//???
 }
 
 

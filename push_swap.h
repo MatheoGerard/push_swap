@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 01:45:52 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 03:47:56 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_stack
 
 typedef struct s_op_count
 {
+	float	disorder_val;
 	int	sa;
 	int	sb;
 	int	ss;
@@ -39,6 +40,7 @@ typedef struct s_op_count
 	int	rrr;
 }			t_op_count;
 
+float	disorder(t_stack *a);
 void	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench);
 void	ft_swap(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values);
 void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench);
@@ -61,4 +63,5 @@ void	flag_detect(char **argv, int mode_return[]);
 void	flag_validation(char **argv, int ac, t_stack *stacks_ab);
 int	ft_is_int(char *str);
 void	do_print(t_op_count *values, int is_bench, char *strat);
+char	*print_float(float nb);
 #endif

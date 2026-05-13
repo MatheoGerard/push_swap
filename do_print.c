@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:37:59 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 00:01:30 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 05:03:58 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	do_print(t_op_count *val, int is_bench, char *strat)
 {
 	if (is_bench)
 	{
+		printf("[bench] disorder:  %s%%\n", print_float(val->disorder_val));
 		printf("[bench] strategy:  %s\n", strat);
 		printf("[bench] total_ops:  %d\n", total_ops(val));
 		printf("[bench] sa: %d  sb: %d  ss: ", val->sa, val->sb);
