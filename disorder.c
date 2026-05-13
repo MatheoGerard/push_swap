@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 01:50:54 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 02:31:49 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 06:01:27 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ float	disorder(t_stack *a)
 	i = 0;
 	mistakes = 0.0f;
 	total_pairs = 0.0f;
-	while (i < a->current_len)
+	while (i < a->current_len + 1)
 	{
 		j = i + 1;
-		while (j < a->current_len - 1)
+		while (j < a->current_len)
 		{
 			total_pairs += 1.0f;
 			if (a->nbrs[i] > a->nbrs[j])
