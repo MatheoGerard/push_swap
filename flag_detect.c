@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 06:10:10 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 07:37:47 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_strcmp(char *argv, char *flag)
 {
 	int	i;
 
+	if (argv == NULL)
+		return (0);
 	i = 0;
 	while (argv[i] != '\0')
 	{
@@ -84,11 +86,12 @@ void	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 	{
 		if (is_bench)
 		{
-			//bench();
-			ft_parse(argv, stacks_ab, 1, 1);
+			if (!ft_parse(argv, stacks_ab, 1, 1))
+				return ;
 		}
 		else
-			ft_parse(argv, stacks_ab, 1, 0);
+			if(!ft_parse(argv, stacks_ab, 1, 0))
+				return ;
 	}
 	values = init_values(is_adpt, stacks_ab);
 	if (!values)
@@ -108,11 +111,12 @@ void	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 	{
 		if (is_bench)
 		{
-			//bench();
-			ft_parse(argv, stacks_ab, 1, 1);
+			if (!ft_parse(argv, stacks_ab, 1, 1))
+				return ;
 		}
 		else
-			ft_parse(argv, stacks_ab, 1, 0);
+			if (!ft_parse(argv, stacks_ab, 1, 0))
+				return ;
 	}
 	values = init_values(is_adpt, stacks_ab);
 	chunck_divide(stacks_ab, values, is_bench);
@@ -128,7 +132,7 @@ void	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
 
 	if (flag_find[0] == 0 && flag_find[1] == 0)
 		ft_parse(argv, stacks_ab, 0, 0);
-	else if (is_bench && flag_find[1] == 5)
+	else if (is_bench && (flag_find[1] == 5 || flag_find[0] == 5))
 		ft_parse(argv, stacks_ab, 1, 1);
 	else
 		ft_parse(argv, stacks_ab, 1, 0);
@@ -146,12 +150,10 @@ void	flag_validation(char **argv, int ac, t_stack *stacks_ab)
 	int	flag_find[2];
 	int	is_bench;
 
-	flag_detect(argv, flag_find);
 	is_bench = 0;
-//	if (flag_find[0] == 0 && flag_find[1] != 0)
-//		return (do_ERROR());
-//	if (flag_find[0] == flag_find[1])
-//		return (ERROR());
+	flag_detect(argv, flag_find);
+	if (flag_find[0] == -1 || flag_find[1] == -1)
+		return (ft_putstr_fd("Error\n", 2));
 	if (flag_find[0] == 1 || flag_find[1] == 1)
 		is_bench = 1;
 	if (flag_find[0] == 2 || flag_find[1] == 2)

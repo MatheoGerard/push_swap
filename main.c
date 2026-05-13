@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/12 17:29:08 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 07:14:08 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	main(int ac, char **av)
 	t_stack *pi;
 
 	flag_validation(av, ac, stacks_ab);
+	//free(&stacks_ab[1]);
+	//free(&stacks_ab[0]);
 //	if (flag_detect(av) > 4)
 //		ft_parse(av, stacks_ab, 0);
 //	else
 //		ft_parse(av, stacks_ab, 1);
-	a = &stacks_ab[0];
-	b = &stacks_ab[1];
 //	if (flag_detect(av) == 0)
 //		selection_sort(a, b);
 //	else if (flag_detect(av) == 1)

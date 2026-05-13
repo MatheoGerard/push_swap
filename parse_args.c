@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/12 16:59:58 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 07:30:25 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 int	ft_is_int(char *str)
 {
+	if (!str)
+		return (0);
+	if (*str == '0' && ft_strlen(str) != 1)
+		return (0);
 	if (*str == '-')
+	{
+		if (ft_strlen(str) == 1 || str[1] == '0')
+			return (0);
 		str++;
+	}
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
@@ -35,7 +43,7 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 	while (str_array[i])
 		if (!ft_is_int(str_array[i++]))
 		{
-			stacks_ab[0] = *a;
+			stacks_ab = NULL;
 			return (stacks_ab);
 		}
 	a = (t_stack *)malloc(sizeof(t_stack));
@@ -53,7 +61,7 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 	return (stacks_ab);
 }
 
-void	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench)
+int	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench)
 {
 	int	i;
 
@@ -64,10 +72,15 @@ void	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench)
 	i = 0;
 	argv++;
 	stacks_ab = ft_init(argv, stacks_ab);
+	if (!stacks_ab)
+		return (ft_putstr_fd("Error\n", 2), 0);
 	while (argv[i])
 	{
 		stacks_ab[0].nbrs[i] = ft_atoi(argv[i]);
 		stacks_ab[0].index[i] = i;
 		i++;
 	}
+	if (is_double_num(stacks_ab))
+		return (ft_putstr_fd("Error\n", 2), 0);
+	return (1);
 }
