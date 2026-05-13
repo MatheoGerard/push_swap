@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 05:57:27 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 06:10:10 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,25 +129,14 @@ void	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
 	if (flag_find[0] == 0 && flag_find[1] == 0)
 		ft_parse(argv, stacks_ab, 0, 0);
 	else if (is_bench && flag_find[1] == 5)
-	{
-		//bench();
 		ft_parse(argv, stacks_ab, 1, 1);
-	}
 	else
 		ft_parse(argv, stacks_ab, 1, 0);
 	disorder_value = disorder(stacks_ab);
-	if (disorder_value < 0)
-		return ;
 	if (disorder_value <= .2f)
-	{
 		do_simple(argv, stacks_ab, is_bench, 1);
-		return ;
-	}
-	if (disorder_value <= .5f)
-	{
+	else if (disorder_value <= .5f)
 		do_medium(argv, stacks_ab, is_bench, 1);
-		return ;
-	}
 	else
 		printf("your bigger dumbass\n");
 }
