@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 07:14:08 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 09:18:31 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	main(int ac, char **av)
 	t_stack *pi;
 
 	flag_validation(av, ac, stacks_ab);
-	//free(&stacks_ab[1]);
+//	free((&stacks_ab[1])->index);
+//	free((&stacks_ab[0])->index);
+//	free((&stacks_ab[0])->nbrs);
+//	free((&stacks_ab[1])->nbrs);
+
 	//free(&stacks_ab[0]);
 //	if (flag_detect(av) > 4)
 //		ft_parse(av, stacks_ab, 0);
@@ -36,7 +40,7 @@ int	main(int ac, char **av)
 //		printf("Error\n");
 //		return (0);
 //	}
-
+ 
 
 
 	//quick_sort_test2(a, b);

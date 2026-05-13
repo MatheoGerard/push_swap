@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/12 23:07:39 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 09:37:46 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ void	push(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)
 		else
 			values->pa += 1;
 	}
-	else
-		printf("p%c\n", in_stack);
+	printf("p%c\n", in_stack);
 }
 
 void	pushfrom(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)

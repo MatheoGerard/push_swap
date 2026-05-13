@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/12 21:28:22 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 09:38:18 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ void	rotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
 		else
 			values->rb += 1;
 	}
-	else
-		printf("r%c\n", stack_in);
+	printf("r%c\n", stack_in);
 }
 
 void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
@@ -84,6 +83,5 @@ void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench
 		else
 			values->rrb += 1;
 	}
-	else
-		printf("rr%c\n", stack_in);
+	printf("rr%c\n", stack_in);
 }

@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:34:34 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/12 22:20:21 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 09:37:59 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_swap(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values
 			values->sb += 1;
 		}
 	}
-	else
-		printf("s%c\n", in_stack);
+	printf("s%c\n", in_stack);
 }
 
