@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 07:37:47 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 19:04:25 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	flag_detect(char **argv, int mode_return[])
 	}
 }
 
-t_op_count	*init_values(int is_adpt, t_stack *stacks_ab)
+t_op_count	*init_values(t_stack *stacks_ab)
 {
 	t_op_count	*values;
 
@@ -93,7 +93,7 @@ void	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 			if(!ft_parse(argv, stacks_ab, 1, 0))
 				return ;
 	}
-	values = init_values(is_adpt, stacks_ab);
+	values = init_values(stacks_ab);
 	if (!values)
 		return ;
 	selection_sort(stacks_ab, is_bench, values);
@@ -118,7 +118,7 @@ void	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 			if (!ft_parse(argv, stacks_ab, 1, 0))
 				return ;
 	}
-	values = init_values(is_adpt, stacks_ab);
+	values = init_values(stacks_ab);
 	chunck_divide(stacks_ab, values, is_bench);
 	if (is_adpt)
 		do_print(values, is_bench, "Adaptive / O(n√n)");
@@ -145,7 +145,7 @@ void	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
 		printf("your bigger dumbass\n");
 }
 
-void	flag_validation(char **argv, int ac, t_stack *stacks_ab)
+void	flag_validation(char **argv, t_stack *stacks_ab)
 {
 	int	flag_find[2];
 	int	is_bench;

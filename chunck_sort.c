@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:18:36 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/12 22:41:22 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 19:03:15 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_sqrt(int nb)
 
 void	index_select(t_stack *a)
 {
-	int	min;
 	int	i;
 	int	j;
 
@@ -67,6 +66,7 @@ int	greater_nb_than_base(t_stack *a, int base_nb)
 	int	count;
 
 	i = 0;
+	count = 0;
 	while (i < a->current_len)
 	{
 		if (a->index[i] < base_nb)
@@ -78,7 +78,7 @@ int	greater_nb_than_base(t_stack *a, int base_nb)
 	return (count);
 }
 
-int	check_range(int max, t_stack *a, t_stack *b)
+int	check_range(int max, t_stack *b)
 {
 	int	i;
 
@@ -106,7 +106,7 @@ void	check_for_max(t_stack *a, t_stack *b, t_op_count *values, int is_bench)
 				max = b->nbrs[i];
 			i++;
 		}
-		if (check_range(max, a, b) < (b->current_len / 2) + 1)
+		if (check_range(max, b) < (b->current_len / 2) + 1)
 		{
 			while (b->nbrs[0] != max)
 			{

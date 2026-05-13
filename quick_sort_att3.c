@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:44:16 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/27 14:53:58 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 19:08:00 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	quicksort(t_stack *a, t_stack *b, t_stack *pi, char in_stack)
 			in_stack = 'b';
 		else
 			in_stack = 'a';
-		/*if (!all_in_history(a, b, pi, in_stack))
+		if (!all_in_history(a, b, pi, in_stack))
 			quicksort(a, b, pi, in_stack);
 	}
 		

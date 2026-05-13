@@ -6,11 +6,12 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 09:38:18 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 19:10:06 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	pushup_tmp(t_stack *stack)
 {
@@ -51,7 +52,8 @@ void	rotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
 
 	stack = &stacks_ab[stack_in - 'a'];//????
 	if (stack->current_len <= 1)
-		return ((void)printf("%s\n", "1 or no element in stack!!!"));
+		//return ((void)printf("%s\n", "1 or no element in stack!!!"));
+		return ;
 	end = stack->current_len - 1;
 	pushup_tmp(stack);
 	stack->nbrs[end] = stack->tmp;
@@ -72,7 +74,8 @@ void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench
 
 	stack = &stacks_ab[stack_in - 'a'];//????
 	if (stack->current_len <= 1)
-		return ((void)printf("%s\n", "1 or no element in stack!!!"));
+		//return ((void)printf("%s\n", "1 or no element in stack!!!"));
+		return ;
 	pushdown_tmp(stack);
 	stack->nbrs[0] = stack->tmp;
 	stack->index[0] = stack->tmpi;

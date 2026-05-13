@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 09:18:31 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 19:06:24 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 int	main(int ac, char **av)
 {
+	(void)ac;
 	t_stack	stacks_ab[2];
-	t_stack	*a;
-	t_stack	*b;
-	t_stack *pi;
+//	t_stack	*a;
+//	t_stack	*b;
+//	t_stack *pi;
 
-	flag_validation(av, ac, stacks_ab);
+	flag_validation(av, stacks_ab);
 //	free((&stacks_ab[1])->index);
 //	free((&stacks_ab[0])->index);
 //	free((&stacks_ab[0])->nbrs);
@@ -68,7 +69,6 @@ int	main(int ac, char **av)
 		printf("%d\n", a->nbrs[i]);
 		i++;
 	}
-	/*
 	i = 0;
 	printf("|||||||STACK_B||||||\n");
 	while (i < b->current_len)

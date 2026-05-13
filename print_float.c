@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 03:05:15 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 05:22:28 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/13 19:06:48 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 char	*print_float(float nb)
 {
-	int	nb_int;
-
 	if (nb == 1)
 		return ("100");
 	if (nb == 0)
