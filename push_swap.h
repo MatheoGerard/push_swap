@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 19:04:54 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/14 21:13:03 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ typedef struct s_op_count
 	int	rrr;
 }			t_op_count;
 
+char	**to_join_to_split(char **av);
 float	disorder(t_stack *a);
-int	is_double_num(t_stack *a);
+int	is_double_num(t_stack *a, char **av);
 int	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench);
 void	ft_swap(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values);
 void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench);
@@ -61,8 +62,9 @@ void	quicksort(t_stack *a, t_stack *b, t_stack *pi, char in_stack);
 int	is_in_history(t_stack *pi_history, t_stack *a, t_stack *b, char a_or_b, int j);
 void	chunck_divide(t_stack *ab, t_op_count *values, int is_bench);
 void	flag_detect(char **argv, int mode_return[]);
-void	flag_validation(char **argv, t_stack *stacks_ab);
+int	flag_validation(int ac, char **argv, t_stack *stacks_ab);
 int	ft_is_int(char *str);
 void	do_print(t_op_count *values, int is_bench, char *strat);
 char	*print_float(float nb);
+void	destroy_all(char **args, t_stack *stacks_ab, int crash);
 #endif

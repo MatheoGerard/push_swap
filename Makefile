@@ -6,7 +6,7 @@
 #    By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 09:24:55 by mgerard           #+#    #+#              #
-#    Updated: 2026/05/13 22:39:02 by mgerard          ###   ########.fr        #
+#    Updated: 2026/05/14 15:56:29 by mgerard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRC = all_in_history.c\
       brute_force.c\
@@ -28,7 +28,6 @@ SRC = all_in_history.c\
       main.c\
       parse_args.c\
       print_float.c\
-      quick_4.c\
       quick_sort_att3.c\
       quick_sort_test2.c\
       rotate.c\

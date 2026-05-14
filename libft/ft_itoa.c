@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/15 20:51:14 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 05:20:01 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/14 20:52:50 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*ft_itoa(int n, int size)
 	int				val_n;
 
 	val_n = n;
-	numb = (char *)malloc(size + 1 + (n > 999) * sizeof(char));
+	size += (n > 999);
+	numb = (char *)malloc(size + 1 * sizeof(char));
 	if (numb == NULL)
 		return (numb);
-	size -= (n < 1000);
-	numb[size] = '\0';
+	numb[size--] = '\0';
 	while (size >= 0)
 	{
 		if (size == 2 - (n < 1000))
@@ -36,11 +36,13 @@ char	*ft_itoa(int n, int size)
 	}
 	return (numb);
 }
-/*
-#include <stdio.h>
+
+/*#include <stdio.h>
 
 int     main(void)
 {
-        printf("%s\n", ft_itoa(450, 4));
-}
-*/
+	char	*test;
+	test = ft_itoa(4450, 4);
+        printf("%s\n", test);
+	free(test);
+}*/

@@ -6,27 +6,47 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:33:34 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 19:06:24 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/14 21:14:28 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
+void	destroy_all(char **args, t_stack *stacks_ab, int crash)
+{
+	int	i;
+
+	i = 0;
+	while (args && args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	if (args)
+		free(args);
+	args = NULL;
+	if (!crash)
+	{
+		free((&stacks_ab[1])->index);
+		free((&stacks_ab[0])->index);
+		free((&stacks_ab[0])->nbrs);
+		free((&stacks_ab[1])->nbrs);
+	}
+}
 int	main(int ac, char **av)
 {
-	(void)ac;
+	char	**args;
+	int	crash;
+
+	args = to_join_to_split(av);
 	t_stack	stacks_ab[2];
 //	t_stack	*a;
 //	t_stack	*b;
 //	t_stack *pi;
 
-	flag_validation(av, stacks_ab);
-//	free((&stacks_ab[1])->index);
-//	free((&stacks_ab[0])->index);
-//	free((&stacks_ab[0])->nbrs);
-//	free((&stacks_ab[1])->nbrs);
-
+	crash = flag_validation(ac, args, stacks_ab);
+	destroy_all(args, stacks_ab, crash);
 	//free(&stacks_ab[0]);
 //	if (flag_detect(av) > 4)
 //		ft_parse(av, stacks_ab, 0);

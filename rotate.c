@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 19:10:06 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/14 18:04:10 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	pushup_tmp(t_stack *stack)
 
 	i = 0;
 	len_minus1 = stack->current_len - 1;
+	if (len_minus1 == -1)
+		return ;
 	stack->tmp = stack->nbrs[0];
 	stack->tmpi = stack->index[0];
 	while (i < len_minus1)
@@ -35,6 +37,8 @@ void	pushdown_tmp(t_stack *stack)
 	int	len_minus1;
 
 	len_minus1 = stack->current_len - 1;
+	if (len_minus1 == -1)
+		return ;
 	stack->tmp = stack->nbrs[len_minus1];
 	stack->tmpi = stack->index[len_minus1];
 	while (len_minus1 > 0)

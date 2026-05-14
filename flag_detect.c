@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 19:04:25 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/14 21:26:26 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	flag_detect(char **argv, int mode_return[])
 	j = 0;
 	mode_return[0] = -1;
 	mode_return[1] = -1;
+	if (!argv[i])
+		return ;
 	while (i < 3)
 	{
 		if (ft_is_int(argv[i]))
@@ -52,17 +54,19 @@ void	flag_detect(char **argv, int mode_return[])
 			mode_return[j++] = 4;
 		else if (ft_strcmp(argv[i], "--adaptive"))
 			mode_return[j++] = 5;
+		else if (argv[i] == NULL)
+			mode_return[j++] = -2;
 		i++;
 	}
 }
 
-t_op_count	*init_values(t_stack *stacks_ab)
+void	*init_values(t_stack *stacks_ab, t_op_count *values)
 {
-	t_op_count	*values;
+	//t_op_count	*values;
 
-	values = (t_op_count *)malloc(sizeof(t_op_count));
-	if (!values)
-		return (NULL);
+	//values = (t_op_count *)malloc(sizeof(t_op_count));
+	//if (!values)
+	//	return (NULL);
 	values->disorder_val = disorder(stacks_ab);
 	values->pa = 0;
 	values->pb = 0;
@@ -78,55 +82,43 @@ t_op_count	*init_values(t_stack *stacks_ab)
 	return (values);
 }
 
-void	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
+int	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 {
-	t_op_count	*values;
+	t_op_count	values[1];
 
-	if (!is_adpt)
-	{
-		if (is_bench)
-		{
-			if (!ft_parse(argv, stacks_ab, 1, 1))
-				return ;
-		}
-		else
-			if(!ft_parse(argv, stacks_ab, 1, 0))
-				return ;
-	}
-	values = init_values(stacks_ab);
-	if (!values)
-		return ;
+	if (!is_adpt && !ft_parse(argv, stacks_ab, 1, is_bench))
+		return (-1);
+	//values = init_values(stacks_ab);
+	//if (!values)
+	//	return (-1);
+	init_values(stacks_ab, values);
 	selection_sort(stacks_ab, is_bench, values);
 	if (is_adpt)
 		do_print(values, is_bench, "Adaptive / O(n²)");
 	else
 		do_print(values, is_bench, "Simple / O(n²)");
+	return (0);
 }
 
-void	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
+int	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 {
-	t_op_count	*values;
+	t_op_count	values[1];
 
-	if (!is_adpt)
-	{
-		if (is_bench)
-		{
-			if (!ft_parse(argv, stacks_ab, 1, 1))
-				return ;
-		}
-		else
-			if (!ft_parse(argv, stacks_ab, 1, 0))
-				return ;
-	}
-	values = init_values(stacks_ab);
+	if (!is_adpt && !ft_parse(argv, stacks_ab, 1, is_bench))
+		return (-1);
+	//values = init_values(stacks_ab);
+	//if (!values)
+	//	return (-1);
+	init_values(stacks_ab, values);
 	chunck_divide(stacks_ab, values, is_bench);
 	if (is_adpt)
 		do_print(values, is_bench, "Adaptive / O(n√n)");
 	else
 		do_print(values, is_bench, "Medium / O(n√n)");
+	return (0);
 }
 
-void	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
+int	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
 {
 	float	disorder_value;
 
@@ -138,14 +130,14 @@ void	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
 		ft_parse(argv, stacks_ab, 1, 0);
 	disorder_value = disorder(stacks_ab);
 	if (disorder_value <= .2f)
-		do_simple(argv, stacks_ab, is_bench, 1);
+		return (do_simple(argv, stacks_ab, is_bench, 1));
 	else if (disorder_value <= .5f)
-		do_medium(argv, stacks_ab, is_bench, 1);
+		return (do_medium(argv, stacks_ab, is_bench, 1));
 	else
-		printf("your bigger dumbass\n");
+		return (printf("your bigger dumbass\n"));
 }
 
-void	flag_validation(char **argv, t_stack *stacks_ab)
+int	flag_validation(int ac, char **argv, t_stack *stacks_ab)
 {
 	int	flag_find[2];
 	int	is_bench;
@@ -153,17 +145,22 @@ void	flag_validation(char **argv, t_stack *stacks_ab)
 	is_bench = 0;
 	flag_detect(argv, flag_find);
 	if (flag_find[0] == -1 || flag_find[1] == -1)
-		return (ft_putstr_fd("Error\n", 2));
+		return (ft_putstr_fd("Error\n", 2), -1);
+	if ((ac < 4 && flag_find[0] != 0 && flag_find[1] != 0))
+		return (ft_putstr_fd("Error\n", 2), -1);
+	if (flag_find[0] == flag_find[1] && flag_find[0] != 0)
+		return (ft_putstr_fd("Error\n", 2), -1);
 	if (flag_find[0] == 1 || flag_find[1] == 1)
 		is_bench = 1;
 	if (flag_find[0] == 2 || flag_find[1] == 2)
-		do_simple(argv, stacks_ab, is_bench, 0);
-	else if (flag_find[0] == 3 || flag_find[1] == 3)
-		do_medium(argv, stacks_ab, is_bench, 0);
+		return (do_simple(argv, stacks_ab, is_bench, 0));
+	if (flag_find[0] == 3 || flag_find[1] == 3)
+		return (do_medium(argv, stacks_ab, is_bench, 0));
 //	if (flag_find[0] == 4 || flag_find[1] == 4)
 //		complex(is_bench);//???
 	else
-		do_adaptive(argv, stacks_ab, is_bench, flag_find);
+		return (do_adaptive(argv, stacks_ab, is_bench, flag_find));
+	return (0);
 }
 
 

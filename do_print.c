@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:37:59 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 05:03:58 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/14 21:32:11 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ int	total_ops(t_op_count *val)
 
 void	do_print(t_op_count *val, int is_bench, char *strat)
 {
+	char	*percentage;
+
+	percentage = print_float(val->disorder_val);
 	if (is_bench)
 	{
-		printf("[bench] disorder:  %s%%\n", print_float(val->disorder_val));
+		printf("[bench] disorder:  %s%%\n", percentage);
 		printf("[bench] strategy:  %s\n", strat);
 		printf("[bench] total_ops:  %d\n", total_ops(val));
 		printf("[bench] sa: %d  sb: %d  ss: ", val->sa, val->sb);
@@ -45,5 +48,5 @@ void	do_print(t_op_count *val, int is_bench, char *strat)
 		printf("%d  rra: %d  rrb: %d", val->rr, val->rra, val->rrb);
 		printf("  rrr: %d\n", val->rrr);
 	}
-	free(val);
+	free(percentage);
 }
