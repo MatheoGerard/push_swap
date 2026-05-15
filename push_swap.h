@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/14 21:13:03 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 19:39:59 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,5 @@ int	ft_is_int(char *str);
 void	do_print(t_op_count *values, int is_bench, char *strat);
 char	*print_float(float nb);
 void	destroy_all(char **args, t_stack *stacks_ab, int crash);
+int	partitions(t_stack *ab, int low, int high, t_op_count *values, int is_bench);
 #endif

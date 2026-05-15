@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:44:16 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/15 15:06:29 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/15 19:38:16 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	find_index(t_stack *ab, int pivot_index)
 	return (pivot_index);
 }
 
-int	partitions(t_stack *ab, char in_stack, int low, int high, t_op_count *values, int is_bench)
+int	partitions(t_stack *ab, int low, int high, t_op_count *values, int is_bench)
 {
 	int	p_val;
 	int	pi;
@@ -31,11 +31,11 @@ int	partitions(t_stack *ab, char in_stack, int low, int high, t_op_count *values
 	i = 0;
 	while (stack->index[0] != pi)
 	{
-		if (in_stack == 'a' && stack->nbrs[0] < p_val ||
-				in_stack == 'b' && stack->nbrs[0] > p_val)
-			pushfrom(ab, in_stack, is_bench, values);
+		if (ab->in_stack == 'a' && stack->nbrs[0] < p_val ||
+				ab->in_stack == 'b' && stack->nbrs[0] > p_val)
+			pushfrom(ab, ab->in_stack, is_bench, values);
 		else
-			rotate(ab, in_stack, values, is_bench);
+			rotate(ab, ab->in_stack, values, is_bench);
 	}
 	stack = &ab[0];
 	while (i < stack->current_len)
