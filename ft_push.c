@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/15 17:18:56 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 20:27:37 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,15 @@ void	push(t_stack *ab, int is_bench, t_op_count *values)
 void	pushfrom(t_stack *stacks_ab, int is_bench, t_op_count *values)
 {
 	if (values->in_stack == 'a')
+	{
 		values->in_stack = 'b';
-	else
+		push(stacks_ab, is_bench, values);
 		values->in_stack = 'a';
-	push(stacks_ab, is_bench, values);
-	values->in_stack = 'a';
+	}
+	else
+	{
+		values->in_stack = 'a';
+		push(stacks_ab, is_bench, values);
+		values->in_stack = 'b';
+	}
 }

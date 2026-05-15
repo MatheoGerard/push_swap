@@ -6,11 +6,7 @@
 #    By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 09:24:55 by mgerard           #+#    #+#              #
-<<<<<<< Updated upstream
-#    Updated: 2026/05/15 14:45:34 by nlovius          ###   ########.fr        #
-=======
-#    Updated: 2026/05/15 14:17:42 by mgerard          ###   ########.fr        #
->>>>>>> Stashed changes
+#    Updated: 2026/05/15 20:10:00 by mgerard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +28,10 @@ SRC = all_in_history.c\
       main.c\
       parse_args.c\
       print_float.c\
-      quick_4.c\
       rotate.c\
       simple_sort.c\
-      chunk_utils.c
+      chunk_utils.c\
+      quick_4.c
 
 LIBFT_SRC = libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isprint.c \
        libft/ft_strlen.c libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c libft/ft_memmove.c \
