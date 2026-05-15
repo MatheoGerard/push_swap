@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/14 21:18:04 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 17:39:46 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 
 	i = 0;
 	while (str_array[i])
-		if (!ft_is_int(str_array[i++]))
+	{
+		if (!ft_is_int(str_array[i]))
 		{
 			stacks_ab = NULL;
 			return (stacks_ab);
 		}
+		i++;
+	}
 	stacks_ab[0].nbrs = (int *)malloc(i * sizeof(int));
 	stacks_ab[1].nbrs = (int *)malloc(i * sizeof(int));
 	stacks_ab[0].index = (int *)malloc(i * sizeof(int));
@@ -57,7 +60,7 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 
 char	**to_join_to_split(char **av)
 {
-	int	i;
+	int		i;
 	char	*av_join;
 	char	*tmp;
 	char	*tmp_space_av;

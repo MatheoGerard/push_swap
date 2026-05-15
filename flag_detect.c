@@ -6,7 +6,11 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2026/05/15 19:39:05 by mgerard          ###   ########.fr       */
+=======
+/*   Updated: 2026/05/15 16:39:39 by mgerard          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +71,7 @@ void	*init_values(t_stack *stacks_ab, t_op_count *values)
 	//values = (t_op_count *)malloc(sizeof(t_op_count));
 	//if (!values)
 	//	return (NULL);
+	values->in_stack = 'a';
 	values->disorder_val = disorder(stacks_ab);
 	values->pa = 0;
 	values->pb = 0;

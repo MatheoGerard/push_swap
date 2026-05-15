@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 01:50:54 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/14 20:17:05 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 17:22:02 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 float	disorder(t_stack *a)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	float	total_pairs;
 	float	mistakes;
 

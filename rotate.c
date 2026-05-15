@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/14 18:04:10 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 17:27:25 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,13 @@ void	pushdown_tmp(t_stack *stack)
 	}
 }
 
-void	rotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
+void	rotate(t_stack *stacks_ab, t_op_count *values, int is_bench)
 {
-	int	end;
+	int		end;
 	t_stack	*stack;
 
-	stack = &stacks_ab[stack_in - 'a'];//????
+	stack = &stacks_ab[values->in_stack - 'a'];
 	if (stack->current_len <= 1)
-		//return ((void)printf("%s\n", "1 or no element in stack!!!"));
 		return ;
 	end = stack->current_len - 1;
 	pushup_tmp(stack);
@@ -64,31 +63,30 @@ void	rotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
 	stack->index[end] = stack->tmpi;
 	if (is_bench)
 	{
-		if (stack_in == 'a')
+		if (values->in_stack == 'a')
 			values->ra += 1;
 		else
 			values->rb += 1;
 	}
-	printf("r%c\n", stack_in);
+	printf("r%c\n", values->in_stack);
 }
 
-void	rrotate(t_stack *stacks_ab, char stack_in, t_op_count *values, int is_bench)
+void	rrotate(t_stack *stacks_ab, t_op_count *values, int is_bench)
 {
 	t_stack	*stack;
 
-	stack = &stacks_ab[stack_in - 'a'];//????
+	stack = &stacks_ab[values->in_stack - 'a'];
 	if (stack->current_len <= 1)
-		//return ((void)printf("%s\n", "1 or no element in stack!!!"));
 		return ;
 	pushdown_tmp(stack);
 	stack->nbrs[0] = stack->tmp;
 	stack->index[0] = stack->tmpi;
 	if (is_bench)
 	{
-		if (stack_in == 'a')
+		if (values->in_stack == 'a')
 			values->rra += 1;
 		else
 			values->rrb += 1;
 	}
-	printf("rr%c\n", stack_in);
+	printf("rr%c\n", values->in_stack);
 }

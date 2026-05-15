@@ -6,12 +6,13 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 09:37:46 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 17:18:56 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
 void	pushing(t_stack *src, t_stack *dest)
 {
 	int	len;
@@ -32,24 +33,25 @@ void	pushing(t_stack *src, t_stack *dest)
 	dest -> current_len += 1;
 }
 
-void	push(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)
+void	push(t_stack *ab, int is_bench, t_op_count *values)
 {
-	pushing(&stacks_ab['b' - in_stack], &stacks_ab[in_stack - 'a']);
+	pushing(&ab['b' - values->in_stack], &ab[values->in_stack - 'a']);
 	if (is_bench)
 	{
-		if (in_stack == 'a')
+		if (values->in_stack == 'a')
 			values->pb += 1;
 		else
 			values->pa += 1;
 	}
-	printf("p%c\n", in_stack);
+	printf("p%c\n", values->in_stack);
 }
 
-void	pushfrom(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)
+void	pushfrom(t_stack *stacks_ab, int is_bench, t_op_count *values)
 {
-	if (in_stack == 'a')
-		in_stack = 'b';
+	if (values->in_stack == 'a')
+		values->in_stack = 'b';
 	else
-		in_stack = 'a';
-	push(stacks_ab, in_stack, is_bench, values);
+		values->in_stack = 'a';
+	push(stacks_ab, is_bench, values);
+	values->in_stack = 'a';
 }

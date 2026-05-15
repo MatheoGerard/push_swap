@@ -6,12 +6,13 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:34:34 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/13 09:37:59 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 17:21:21 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
 void	ft_swaop(t_stack *stack)
 {
 	if (stack->current_len == 1)
@@ -27,11 +28,11 @@ void	ft_swaop(t_stack *stack)
 	stack->index[1] = stack->tmpi;
 }
 
-void	ft_swap(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values)
+void	ft_swap(t_stack *stacks_ab, int is_bench, t_op_count *values)
 {
 	if (is_bench)
 	{
-		if (in_stack == 'a')
+		if (values->in_stack == 'a')
 		{
 			ft_swaop(&stacks_ab[0]);
 			values->sa += 1;
@@ -42,6 +43,5 @@ void	ft_swap(t_stack *stacks_ab, char in_stack, int is_bench, t_op_count *values
 			values->sb += 1;
 		}
 	}
-	printf("s%c\n", in_stack);
+	printf("s%c\n", values->in_stack);
 }
-
