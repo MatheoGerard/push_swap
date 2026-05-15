@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/14 21:26:26 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/15 15:01:00 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,6 @@ int	do_simple(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 
 	if (!is_adpt && !ft_parse(argv, stacks_ab, 1, is_bench))
 		return (-1);
-	//values = init_values(stacks_ab);
-	//if (!values)
-	//	return (-1);
 	init_values(stacks_ab, values);
 	selection_sort(stacks_ab, is_bench, values);
 	if (is_adpt)
@@ -106,15 +103,27 @@ int	do_medium(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 
 	if (!is_adpt && !ft_parse(argv, stacks_ab, 1, is_bench))
 		return (-1);
-	//values = init_values(stacks_ab);
-	//if (!values)
-	//	return (-1);
 	init_values(stacks_ab, values);
 	chunck_divide(stacks_ab, values, is_bench);
 	if (is_adpt)
 		do_print(values, is_bench, "Adaptive / O(n√n)");
 	else
 		do_print(values, is_bench, "Medium / O(n√n)");
+	return (0);
+}
+
+int	do_complex(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
+{
+	t_op_count	values[1];
+
+	if (!is_adpt && !ft_parse(argv, stacks_ab, 1, is_bench))
+		return (-1);
+	init_values(stacks_ab, values);
+	partitions(stacks_ab, 'a', 0, stacks_ab->current_len - 1, values, is_bench);
+	if (is_adpt)
+		do_print(values, is_bench, "Adaptive / O(n(log n))");
+	else
+		do_print(values, is_bench, "Complex / O(n√n)");
 	return (0);
 }
 
@@ -134,7 +143,7 @@ int	do_adaptive(char **argv, t_stack *stacks_ab, int is_bench, int *flag_find)
 	else if (disorder_value <= .5f)
 		return (do_medium(argv, stacks_ab, is_bench, 1));
 	else
-		return (printf("your bigger dumbass\n"));
+		return (do_complex(argv, stacks_ab, is_bench, 1));
 }
 
 int	flag_validation(int ac, char **argv, t_stack *stacks_ab)
@@ -156,8 +165,9 @@ int	flag_validation(int ac, char **argv, t_stack *stacks_ab)
 		return (do_simple(argv, stacks_ab, is_bench, 0));
 	if (flag_find[0] == 3 || flag_find[1] == 3)
 		return (do_medium(argv, stacks_ab, is_bench, 0));
-//	if (flag_find[0] == 4 || flag_find[1] == 4)
-//		complex(is_bench);//???
+	if (flag_find[0] == 4 || flag_find[1] == 4)
+		return (do_complex(argv, stacks_ab, is_bench, 0));
+		//return (partitions(stacks_ab, 'a', 0, stacks_ab->current_len - 1, values, is_bench));
 	else
 		return (do_adaptive(argv, stacks_ab, is_bench, flag_find));
 	return (0);
