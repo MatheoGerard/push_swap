@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 03:53:28 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/16 19:09:11 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/16 22:51:03 by nlovius          ###   ########.fr       */
 /*   Updated: 2026/05/15 16:39:39 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -123,9 +123,9 @@ int	do_complex(char** argv, t_stack *stacks_ab, int is_bench, int is_adpt)
 	init_values(stacks_ab, values);
 	radix_sort(stacks_ab, values, is_bench);
 	if (is_adpt)
-		do_print(values, is_bench, "Adaptive / O(n(log n))");
+		do_print(values, is_bench, "Adaptive / O(n log n)");
 	else
-		do_print(values, is_bench, "Complex / O(n√n)");
+		do_print(values, is_bench, "Complex / O(n log n");
 	return (0);
 }
 
