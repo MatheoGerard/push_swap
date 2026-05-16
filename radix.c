@@ -6,32 +6,11 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:55:12 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/16 21:11:30 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/16 22:53:39 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int     is_end_sort(t_stack *ab)
-{
-	int	i;
-
-	i = ab->current_len - 1;
-	while (i < ab[1].current_len - 1 &&
-			ab->index[i] == i + ab[1].current_len - 1)
-		i--;
-	return (ab->current_len - 1 - i);
-}
-
-int	index_already_sort(t_stack *ab)
-{
-	int	i;
-
-	i = ab->current_len - 1;
-	while (ab->index[i] == i)
-		i--;
-	return (i);
-}
 
 void	radix_sort(t_stack *ab, t_op_count *values, int is_bench)
 {
