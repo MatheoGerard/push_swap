@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/15 20:42:07 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/16 19:36:08 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	bubble_sort(t_stack *a);
 void	selection_sort(t_stack *ab, int is_bench, t_op_count *val);
 void	quick_sortish(t_stack *ab, t_op_count *val, int is_bench);
 void	quick_sort_test2(t_stack *a, t_stack *b);
-int		is_sorted(t_stack *a, t_stack *b);
+int		sorted(t_stack *a);
 t_stack	*init_pivot_history(t_stack *a);
 //int	partition(t_stack *a, t_stack *b, t_stack *pi, char a_or_b);
 int		all_in_history(t_stack *a, t_stack *b, t_stack *pi, char in_stack);
@@ -71,4 +71,5 @@ char	*print_float(float nb);
 void	destroy_all(char **args, t_stack *stacks_ab, int crash);
 int		ft_sqrt(int nb);
 void	index_select(t_stack *a);
+void	radix_sort(t_stack *ab, t_op_count *values, int is_bench);
 #endif
