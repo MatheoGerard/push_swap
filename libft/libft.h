@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 10:31:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/13 04:41:12 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/17 16:08:55 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "printf.h"
 # define SIZE_MAX UINT_MAX
 
 typedef struct s_list

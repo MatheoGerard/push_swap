@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/16 18:55:12 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/16 22:53:39 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/17 16:04:16 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	radix_sort(t_stack *ab, t_op_count *values, int is_bench)
 		j = 0;
 		while (j < stack_a_len)
 		{
-			if (((ab->index[0] >> i) & 1) == 1)
+			if (sorted(ab))
+				break ;
+			else if (((ab->index[0] >> i) & 1) == 1)
 				rotate(ab, values, is_bench);
 			else
 				pushfrom(ab, is_bench, values);
