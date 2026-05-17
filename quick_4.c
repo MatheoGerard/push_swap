@@ -6,7 +6,11 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/26 13:44:16 by nlovius           #+#    #+#             */
+<<<<<<< Updated upstream
 /*   Updated: 2026/05/16 17:08:59 by nlovius          ###   ########.fr       */
+=======
+/*   Updated: 2026/05/15 21:21:06 by mgerard          ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +96,7 @@ void	quick_sortish(t_stack *stacks_ab, t_op_count *values, int is_bench)
 	pi = stacks_ab->current_len - 1;
 	while (1)
 	{
+<<<<<<< Updated upstream
 		pi = partitions(stacks_ab, 0, pi, values, is_bench);
 		if (pi != 0)
 		{
@@ -126,5 +131,12 @@ void	quick_sortish(t_stack *stacks_ab, t_op_count *values, int is_bench)
 				is_en--;
 			pi -= is_en;
 		}
+=======
+		pi = partitions(stacks_ab, 0, stacks_ab->current_len - 1 + stacks_ab[0]->current_len - 1, values, is_bench);
+		values->in_stack = 'b';
+		pi = partitions(stacks_ab, 0, 0, values, is_bench);
+		pi--;
+		values->in_stack = 'a';
+>>>>>>> Stashed changes
 	}
 }
