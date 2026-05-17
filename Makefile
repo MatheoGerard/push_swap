@@ -6,7 +6,7 @@
 #    By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 09:24:55 by mgerard           #+#    #+#              #
-#    Updated: 2026/05/17 16:17:09 by nlovius          ###   ########.fr        #
+#    Updated: 2026/05/17 16:50:53 by mgerard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ SRC = all_in_history.c\
       is_double_num.c\
       main.c\
       parse_args.c\
-      print_float.c\
       rotate.c\
       simple_sort.c\
       chunk_utils.c\
@@ -43,7 +42,7 @@ LIBFT_SRC = libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_is
        libft/ft_putendl_fd.c libft/ft_putnbr_fd.c\
        libft/ft_lstnew.c libft/ft_lstadd_front.c libft/ft_lstsize.c libft/ft_lstlast.c \
        libft/ft_lstadd_back.c libft/ft_lstdelone.c libft/ft_lstclear.c libft/ft_lstiter.c \
-       libft/ft_lstmap.c libft/ft_print_f.c libft/ft_putdecimal.c libft/ft_puttext.c \
+       libft/ft_lstmap.c libft/print_f.c libft/ft_putdecimal.c libft/ft_puttext.c \
        libft/ft_puthexa.c
 
 OBJ = $(SRC:.c=.o)
@@ -61,7 +60,7 @@ $(NAME): $(OBJ) $(LIBFT_OBJ)
 $(LIBFT_DIR)/%.o: $(LIBFT_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean
+clean:
 	rm -f $(OBJ) $(LIBFT_OBJ)
 
 fclean: clean

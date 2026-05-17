@@ -6,13 +6,13 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 17:28:44 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/29 16:31:41 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/17 16:50:06 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex(va_list args, char a_or_big_a)
+int	ft_puthex(int fd, va_list args, char a_or_big_a)
 {
 	unsigned int	i;
 	unsigned int	nb;
@@ -36,27 +36,27 @@ int	ft_puthex(va_list args, char a_or_big_a)
 	}
 	nb = (7 - i) + 1;
 	while (str[i])
-		write(1, &str[i++], 1);
+		write(fd, &str[i++], 1);
 	return ((int)nb);
 }
 
-int	ft_puthexa(va_list args)
+int	ft_puthexa(int fd, va_list args)
 {
-	return (ft_puthex(args, 'a'));
+	return (ft_puthex(fd, args, 'a'));
 }
 
-int	ft_puthexa_big(va_list args)
+int	ft_puthexa_big(int fd, va_list args)
 {
-	return (ft_puthex(args, 'A'));
+	return (ft_puthex(fd, args, 'A'));
 }
 
-int	ft_put_pointer(unsigned long nb)
+int	ft_put_pointer(int fd, unsigned long nb)
 {
 	unsigned long	mod;
 	unsigned int	i;
 	char			str[17];
 
-	write(1, &"0x", 2);
+	write(fd, &"0x", 2);
 	i = 15;
 	str[16] = '\0';
 	while (1)
@@ -73,21 +73,21 @@ int	ft_put_pointer(unsigned long nb)
 	}
 	nb = (15 - i) + 2 + 1;
 	while (str[i])
-		write(1, &str[i++], 1);
+		write(fd, &str[i++], 1);
 	return ((int)nb);
 }
 
-int	ft_put_p(va_list args)
+int	ft_put_p(int fd, va_list args)
 {
 	intptr_t	nb;
 
 	nb = (unsigned long)va_arg(args, void *);
 	if (nb == 0)
 	{
-		write(1, &"(nil)", 5);
+		write(fd, &"(nil)", 5);
 		return (5);
 	}
-	return (ft_put_pointer(nb));
+	return (ft_put_pointer(fd, nb));
 }
 
 /*void  test(const char *str, ...)

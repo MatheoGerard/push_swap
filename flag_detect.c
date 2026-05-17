@@ -12,7 +12,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	ft_strcmp(char *argv, char *flag)
 {
@@ -63,11 +62,6 @@ void	flag_detect(char **argv, int mode_return[])
 
 void	*init_values(t_stack *stacks_ab, t_op_count *values)
 {
-	//t_op_count	*values;
-
-	//values = (t_op_count *)malloc(sizeof(t_op_count));
-	//if (!values)
-	//	return (NULL);
 	values->in_stack = 'a';
 	values->disorder_val = disorder(stacks_ab);
 	values->pa = 0;
@@ -169,7 +163,6 @@ int	flag_validation(int ac, char **argv, t_stack *stacks_ab)
 		return (do_medium(argv, stacks_ab, is_bench, 0));
 	if (flag_find[0] == 4 || flag_find[1] == 4)
 		return (do_complex(argv, stacks_ab, is_bench, 0));
-		//return (partitions(stacks_ab, 'a', 0, stacks_ab->current_len - 1, values, is_bench));
 	else
 		return (do_adaptive(argv, stacks_ab, is_bench, flag_find));
 	return (0);

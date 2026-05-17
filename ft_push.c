@@ -6,22 +6,18 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:31:31 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/15 20:27:37 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:16:27 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	pushing(t_stack *src, t_stack *dest)
 {
 	int	len;
 
 	if (src->current_len == 0)
-	{
-		printf("%s\n", "no element in src stack!!!");
 		return ;
-	}
 	len = dest -> current_len;
 	pushup_tmp(src);
 	pushdown_tmp(dest);
@@ -43,7 +39,7 @@ void	push(t_stack *ab, int is_bench, t_op_count *values)
 		else
 			values->pa += 1;
 	}
-	printf("p%c\n", values->in_stack);
+	ft_printf(1, "p%c\n", values->in_stack);
 }
 
 void	pushfrom(t_stack *stacks_ab, int is_bench, t_op_count *values)

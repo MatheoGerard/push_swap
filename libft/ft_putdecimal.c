@@ -6,13 +6,46 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 14:36:51 by nlovius           #+#    #+#             */
-/*   Updated: 2026/04/29 16:16:01 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:00:21 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
-int	ft_put_u(va_list args)
+int	putstr(int fd, char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str[count] != '\0')
+		write(fd, &str[count++], 1);
+	return (0);
+}
+
+int	print_float(int fd, va_list args)
+{
+	char	*nbr;
+	float	nb;
+
+	nb = (float)va_arg(args, double);
+	if (nb == 1)
+		nbr = (ft_strdup("100"));
+	else if (nb == 0)
+		nbr = (ft_strdup("0"));
+	else
+	{
+		nb *= 10000;
+		nbr = ft_itoa((int)nb, 4);
+	}
+	if (nbr == NULL)
+		return (putstr(fd, "(null)"));
+	putstr(fd, nbr);
+	free(nbr);
+	return (0);
+}
+
+int	ft_put_u(int fd, va_list args)
 {
 	unsigned int	i;
 	unsigned int	n;
@@ -30,11 +63,11 @@ int	ft_put_u(va_list args)
 	str[i] = (n % 10) + '0';
 	n = 10 - i + 1;
 	while (str[i])
-		write(1, &str[i++], 1);
+		write(fd, &str[i++], 1);
 	return (n);
 }
 
-int	ft_putnbr(va_list args)
+int	ft_putnbr(int fd, va_list args)
 {
 	int				nb;
 	unsigned int	i;
@@ -48,7 +81,7 @@ int	ft_putnbr(va_list args)
 	if (nb < 0)
 	{
 		n = (unsigned int)-nb;
-		write(1, &"-", 1);
+		write(fd, &"-", 1);
 	}
 	while (n > 9)
 	{
@@ -59,7 +92,7 @@ int	ft_putnbr(va_list args)
 	str[i] = (n % 10) + '0';
 	nb = 10 - i + (nb < 0) + 1;
 	while (str[i])
-		write(1, &str[i++], 1);
+		write(fd, &str[i++], 1);
 	return (nb);
 }
 

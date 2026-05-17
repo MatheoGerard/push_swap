@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	destroy_all(char **args, t_stack *stacks_ab, int crash)
 {

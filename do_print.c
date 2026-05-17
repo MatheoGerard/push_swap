@@ -6,11 +6,10 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:37:59 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/15 15:09:22 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:13:22 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 
 int	total_ops(t_op_count *val)
@@ -34,19 +33,15 @@ int	total_ops(t_op_count *val)
 
 void	do_print(t_op_count *val, int is_bench, char *strat)
 {
-	char	*percentage;
-
-	percentage = print_float(val->disorder_val);
 	if (is_bench)
 	{
-		printf("[bench] disorder:  %s%%\n", percentage);
-		printf("[bench] strategy:  %s\n", strat);
-		printf("[bench] total_ops:  %d\n", total_ops(val));
-		printf("[bench] sa: %d  sb: %d  ss: ", val->sa, val->sb);
-		printf("%d  pa: %d  pb: %d\n", val->ss, val->pa, val->pb);
-		printf("[bench] ra: %d  rb: %d  rr: ", val->ra, val->rb);
-		printf("%d  rra: %d  rrb: %d", val->rr, val->rra, val->rrb);
-		printf("  rrr: %d\n", val->rrr);
+		ft_printf(2, "[bench] disorder:  %f%%\n", val->disorder_val);
+		ft_printf(2, "[bench] strategy:  %s\n", strat);
+		ft_printf(2, "[bench] total_ops:  %d\n", total_ops(val));
+		ft_printf(2, "[bench] sa: %d  sb: %d  ss: ", val->sa, val->sb);
+		ft_printf(2, "%d  pa: %d  pb: %d\n", val->ss, val->pa, val->pb);
+		ft_printf(2, "[bench] ra: %d  rb: %d  rr: ", val->ra, val->rb);
+		ft_printf(2, "%d  rra: %d  rrb: %d", val->rr, val->rra, val->rrb);
+		ft_printf(2, "  rrr: %d\n", val->rrr);
 	}
-	free(percentage);
 }

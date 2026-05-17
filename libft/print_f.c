@@ -6,15 +6,15 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 13:45:07 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/17 16:19:28 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:26:37 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchr(char c)
+int	ft_putchr(int fd, char c)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 	return (1);
 }
 
@@ -32,9 +32,9 @@ void	give(char keys[])
 	keys[9] = 'f';
 }
 
-int	format_print(char c, va_list args)
+int	format_print(int fd, char c, va_list args)
 {
-	int		(*f[10])(va_list);
+	int		(*f[10])(int, va_list);
 	int		i;
 	char	keys[10];
 
@@ -49,15 +49,15 @@ int	format_print(char c, va_list args)
 	f[6] = &ft_puthexa;
 	f[7] = &ft_puthexa_big;
 	f[8] = &ft_putpercent;
-	f[9] = &ft_putfloat;
+	f[9] = &print_float;
 	while (i < 10 && keys[i] != c)
 		i++;
 	if (i == 10)
 		return (-1);
-	return ((f[i])(args));
+	return ((f[i])(fd, args));
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(int fd, const char *str, ...)
 {
 	va_list	args;
 	int		i;
@@ -70,14 +70,14 @@ int	ft_printf(const char *str, ...)
 		if (*str == '%')
 		{
 			str++;
-			len = format_print(*str, args);
+			len = format_print(fd, *str, args);
 			if (len == -1)
-				i += (ft_putchr('%') + ft_putchr(*str));
+				i += (ft_putchr(fd, '%') + ft_putchr(fd, *str));
 			else
 				i += len;
 		}
 		else
-			i += ft_putchr(*str);
+			i += ft_putchr(fd, *str);
 		str++;
 	}
 	va_end(args);

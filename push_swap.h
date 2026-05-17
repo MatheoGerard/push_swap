@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/16 19:36:08 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:13:52 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	flag_detect(char **argv, int mode_return[]);
 int		flag_validation(int ac, char **argv, t_stack *stacks_ab);
 int		ft_is_int(char *str);
 void	do_print(t_op_count *values, int is_bench, char *strat);
-char	*print_float(float nb);
 void	destroy_all(char **args, t_stack *stacks_ab, int crash);
 int		ft_sqrt(int nb);
 void	index_select(t_stack *a);

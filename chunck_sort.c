@@ -6,7 +6,7 @@
 /*   By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 11:18:36 by mgerard           #+#    #+#             */
-/*   Updated: 2026/05/16 15:15:57 by nlovius          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:38:11 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,17 @@ void	chunck_divide(t_stack *ab, t_op_count *values, int is_bench)
 	int	limit;
 	int	j;
 	int	i;
+	int	sqrt;
 
 	i = 0;
 	j = 1;
+	sqrt = ft_sqrt((&ab[0])->current_len);
 	index_select(&ab[0]);
 	while ((&ab[0])->current_len > 0)
 	{
-		base_nb = (ft_sqrt((&ab[0])->current_len)) * j;
-		if (ft_sqrt((&ab[0])->current_len) <= greater_t_b(&ab[0], base_nb))
-			limit = ft_sqrt((&ab[0])->current_len);
+		base_nb = sqrt * j;
+		if (sqrt <= greater_t_b(&ab[0], base_nb))
+			limit = sqrt;
 		else
 			limit = greater_t_b(&ab[0], base_nb);
 		while (i < limit)

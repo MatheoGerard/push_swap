@@ -6,12 +6,11 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 17:41:59 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/15 17:27:25 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/17 17:17:00 by mgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	pushup_tmp(t_stack *stack)
 {
@@ -68,7 +67,7 @@ void	rotate(t_stack *stacks_ab, t_op_count *values, int is_bench)
 		else
 			values->rb += 1;
 	}
-	printf("r%c\n", values->in_stack);
+	ft_printf(1, "r%c\n", values->in_stack);
 }
 
 void	rrotate(t_stack *stacks_ab, t_op_count *values, int is_bench)
@@ -88,5 +87,5 @@ void	rrotate(t_stack *stacks_ab, t_op_count *values, int is_bench)
 		else
 			values->rrb += 1;
 	}
-	printf("rr%c\n", values->in_stack);
+	ft_printf(1, "rr%c\n", values->in_stack);
 }
