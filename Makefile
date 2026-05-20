@@ -6,7 +6,7 @@
 #    By: mgerard <mgerard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/04/20 09:24:55 by mgerard           #+#    #+#              #
-#    Updated: 2026/05/17 16:50:53 by mgerard          ###   ########.fr        #
+#    Updated: 2026/05/20 19:08:21 by nlovius          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,20 +17,21 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = all_in_history.c\
-      brute_force.c\
-      chunck_sort.c\
+      chunk_utils.c\
+      chunk_sort.c\
       disorder.c\
       do_print.c\
       flag_detect.c\
+      do_sort.c\
       ft_push.c\
       ft_swap.c\
       is_double_num.c\
-      main.c\
+      malloc_stacks.c\
       parse_args.c\
       rotate.c\
       simple_sort.c\
-      chunk_utils.c\
-      radix.c
+      radix.c\
+      main.c
 
 LIBFT_SRC = libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_isascii.c libft/ft_isprint.c \
        libft/ft_strlen.c libft/ft_memset.c libft/ft_bzero.c libft/ft_memcpy.c libft/ft_memmove.c \

@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:21:38 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/15 17:39:46 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/20 19:04:36 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ t_stack	*ft_init(char **str_array, t_stack *stacks_ab)
 		}
 		i++;
 	}
-	stacks_ab[0].nbrs = (int *)malloc(i * sizeof(int));
-	stacks_ab[1].nbrs = (int *)malloc(i * sizeof(int));
-	stacks_ab[0].index = (int *)malloc(i * sizeof(int));
-	stacks_ab[1].index = (int *)malloc(i * sizeof(int));
-	if (stacks_ab[0].nbrs == NULL || stacks_ab[1].nbrs == NULL)
+	if (!malloc_stacks(stacks_ab, i))
 		return (NULL);
 	stacks_ab[0].current_len = i;
 	stacks_ab[1].current_len = 0;
@@ -81,9 +77,38 @@ char	**to_join_to_split(char **av)
 	return (av_split);
 }
 
+int	atoi_secure(char *nptr, int *is_int)
+{
+	long int	nb;
+	int			sign;
+
+	nb = 0;
+	sign = 1;
+	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
+	{
+		sign = ',' - *nptr;
+		nptr++;
+	}
+	while (*nptr && ft_isdigit(*nptr))
+	{
+		nb = nb * 10 + (*nptr - '0');
+		if (nb > INT_MAX || nb < INT_MIN)
+		{
+			*is_int = 0;
+			return (0);
+		}
+		nptr++;
+	}
+	*is_int = 1;
+	return (nb * sign);
+}
+
 int	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench)
 {
 	int	i;
+	int	is_int;
 
 	if (is_flag)
 		argv++;
@@ -96,7 +121,9 @@ int	ft_parse(char **argv, t_stack *stacks_ab, int is_flag, int is_bench)
 		return (ft_putstr_fd("Error\n", 2), 0);
 	while (argv[i])
 	{
-		stacks_ab[0].nbrs[i] = ft_atoi(argv[i]);
+		stacks_ab[0].nbrs[i] = atoi_secure(argv[i], &is_int);
+		if (is_int == 0)
+			return (ft_putstr_fd("Error\n", 2), 0);
 		stacks_ab[0].index[i] = i;
 		i++;
 	}

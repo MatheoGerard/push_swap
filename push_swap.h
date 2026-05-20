@@ -6,7 +6,7 @@
 /*   By: nlovius <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:09:15 by nlovius           #+#    #+#             */
-/*   Updated: 2026/05/17 17:13:52 by mgerard          ###   ########.fr       */
+/*   Updated: 2026/05/20 19:06:16 by nlovius          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ void	quick_sortish(t_stack *ab, t_op_count *val, int is_bench);
 void	quick_sort_test2(t_stack *a, t_stack *b);
 int		sorted(t_stack *a);
 t_stack	*init_pivot_history(t_stack *a);
-//int	partition(t_stack *a, t_stack *b, t_stack *pi, char a_or_b);
-int		all_in_history(t_stack *a, t_stack *b, t_stack *pi, char in_stack);
-void	quicksort(t_stack *a, t_stack *b, t_stack *pi, char in_stack);
-//int		is_in_history(t_stack *pi_, t_stack *a, t_stack *b, char , int j);
+void	*init_values(t_stack *stacks_ab, t_op_count *values);
 void	chunck_divide(t_stack *ab, t_op_count *values, int is_bench);
 void	flag_detect(char **argv, int mode_return[]);
 int		flag_validation(int ac, char **argv, t_stack *stacks_ab);
@@ -70,5 +67,6 @@ void	do_print(t_op_count *values, int is_bench, char *strat);
 void	destroy_all(char **args, t_stack *stacks_ab, int crash);
 int		ft_sqrt(int nb);
 void	index_select(t_stack *a);
+int		malloc_stacks(t_stack *ab, int i);
 void	radix_sort(t_stack *ab, t_op_count *values, int is_bench);
 #endif
